@@ -1,0 +1,212 @@
+Note: 
+
+ASUMSI:
+1. indeks ke 0 dari array of vektor<skill> adalah unique skill
+
+
+
+Kelas yang perlu dibuat: 
+
+Engimon 
+
+    string engimon_id (SPEL000)
+    string engimon_name; 
+    string engimon_parent;
+    vector<string> engimon_elements;
+    int level;
+    int exp;
+            // Ketika experience mencapai nilai kelipatan 100, maka engimon akan level up
+            // Ketika engimon telah mencapai nilai maksimum cumulative experience
+            // tertentu, maka engimon akan mati (dihapus dari program)
+    int cum_exp;
+    string nature;
+    string ability; // berbeda dengan skill
+
+    methods:
+        // getter
+        string get_engimon_id();
+        string get_engimon_name();
+        string get_engimon_parent();
+
+        vector<string> get_engimon_elements();
+        int get_level();
+        int get_exp();
+        int get_cum_exp();
+        string get_nature();
+        string get_ability();
+
+        // setter
+        void set_engimon_id(string);
+        void set_engimon_name(string);
+        void set_engimon_parent(string);
+        void set_engimon_elements(vector<string>);
+        void set_level(int);
+        void set_exp(int);
+        void set_cum_exp(int);
+        void set_nature(string);
+        void set_ability(string);
+
+
+
+
+    child:
+        Species
+            string species_name;
+            vector<skill> engimon_skill; // array of skill (max 4) 
+                                         // indeks ke 0 dari array of vektor<skill>
+            
+            methods:
+                // getter
+                string get_species_name();
+                vector<skill> get_engimon_skill();
+
+                // setter
+                void set_species_name(string);
+                    // setter untuk set_engimon_skill() (???)
+
+                void add_engimon_skill(vector<skill>);
+                void change_engimon_skill(vector<skill>);
+            
+
+Skill 
+    string skill_id;
+    string skill_name;
+    string skill_element;
+    int skill_power;
+    int skill_mastery;
+    string skill_description;
+
+    methods:
+        // getter
+        string get_skill_id();
+        string get_skill_name();
+        string get_skill_element();
+        int get_skill_power();
+        int get_skill_mastery();
+        string get_skill_description();
+
+        // setter
+        void set_skill_id(string);
+        void set_skill_name(string);
+        void set_skill_element(string);
+        void set_skill_power(int);
+        void set_skill_mastery(int);
+        void set_skill_description(string);
+
+
+
+Player 
+    Position position;
+    InventoryEngimon InventoryEngimon;
+    InventoryItem InventoryItem;
+
+Position
+    int X;
+    int Y;
+
+    methods:
+    // getter
+    int get_X();
+    int get_Y();
+
+    // setter
+    void set_X(int);
+    void set_Y(int);
+
+Inventory
+    Parent:
+        int max_capacity;
+        int total_stored_item;
+
+        methods:
+        // getter
+        int get_max_capacity();
+        int get_total_stored_item();
+
+        // setter
+        void set_max_capacity(int);
+        void set_total_stored_item(int);
+
+    child:
+        InventoryEngimon
+            vector<string> arrOfEngimon;
+
+        InventoryItem
+            vector<string> arrOfItem;
+
+Battle 
+    Engimon first;
+    Engimon second;
+
+    method:
+        // getter
+        Engimon get_first();
+        Engimon get_second();
+
+        // setter
+        void set_first(Engimon);
+        void set_second(Engimon);
+
+        float type_adv();
+        float sum_power();
+        void fight();
+        void win();
+        void lose();
+        void get_reward();
+
+
+Breeding 
+    Engimon first;
+    Engimon second;
+
+    methods:
+        // getter
+        Engimon get_first();
+        Engimon get_second();
+
+        // setter
+        void set_first(Engimon);
+        void set_second(Engimon);
+
+        bool IsLvlValid();
+        void giveName(); // kasih nama ke anak
+        void inheritSkill();
+        void breed();
+
+Peta 
+    arrOfCell; // belum tau
+    arrOfEngimon; // belum tau
+    int sizeX;
+    int sizeY;
+
+    methods:
+    // getter
+
+    // setter
+
+
+    void generatePeta(); // 
+    void legenda();
+    void spawnMoster();
+
+
+Cell 
+    Position position;
+    cellType; // belum tau
+    content; // belum tau
+
+cellType // belum tau
+    enum[grassland, sea];
+
+content // belum tau
+    enum[player, engimon, air];
+
+gameManagement // belum tau
+    Peta main; // update setiap saat
+    Player player1;
+    run(); // 
+    newGame();
+    continue();
+     exit();
+    load();
+    save(); // kalo gabut
