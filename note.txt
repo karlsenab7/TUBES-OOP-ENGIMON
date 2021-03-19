@@ -109,41 +109,25 @@ Player
     void get_battle(Engimon enemy);
     void get_breeding(Engimon, Engimon);
 
-Inventory
+Inventory (generic class engimon/item)
     Parent:
         int max_capacity;
         int total_stored_item;
+        vector<T> arrOfEngimon;
 
         methods:
         // getter
         int get_max_capacity();
         int get_total_stored_item();
+        vector<T> getInventory();
+        T getInventoryByIndex();
 
         // setter
         void set_max_capacity(int);
         void set_total_stored_item(int);
+        void addInventory(T);
+        void removeInventory(index);
 
-    child:
-        InventoryEngimon
-            vector<Engimon> arrOfEngimon;
-            
-            methods:
-            //getter
-            vector<Engimon> getArrOfEngimon();
-            Engimon getEngimonByIndex();
-            
-            void addEngimon(Engimon);
-            void removeEngimon(index);
-
-        InventoryItem
-            vector<skill> arrOfItem;
-            methods:
-            //getter
-            vector<skill> getArrOfItem();
-            skill getSkillByIndex();
-            
-            void addSkill(Skill);
-            void removeSkill(index);
 
 Battle 
     Engimon first;
