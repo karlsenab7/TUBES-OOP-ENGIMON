@@ -19,8 +19,6 @@ Engimon
             // Ketika engimon telah mencapai nilai maksimum cumulative experience
             // tertentu, maka engimon akan mati (dihapus dari program)
     int cum_exp;
-    string nature;
-    string ability; // berbeda dengan skill
 
     methods:
         // getter
@@ -32,8 +30,6 @@ Engimon
         int get_level();
         int get_exp();
         int get_cum_exp();
-        string get_nature();
-        string get_ability();
 
         // setter
         void set_engimon_id(string);
@@ -43,10 +39,6 @@ Engimon
         void set_level(int);
         void set_exp(int);
         void set_cum_exp(int);
-        void set_nature(string);
-        void set_ability(string);
-
-
 
 
     child:
@@ -64,8 +56,8 @@ Engimon
                 void set_species_name(string);
                     // setter untuk set_engimon_skill() (???)
 
-                void add_engimon_skill(vector<skill>);
-                void change_engimon_skill(vector<skill>);
+                void add_engimon_skill(skill);
+                void change_engimon_skill(skill);
             
 
 Skill 
@@ -99,19 +91,23 @@ Player
     Position position;
     InventoryEngimon InventoryEngimon;
     InventoryItem InventoryItem;
-
-Position
-    int X;
-    int Y;
-
-    methods:
-    // getter
-    int get_X();
-    int get_Y();
-
-    // setter
-    void set_X(int);
-    void set_Y(int);
+    int activeEngimonIdx;
+    
+    method:
+    //getter
+    Engimon get_active_engimon();
+    
+    //setter
+    void set_active_engimon();
+    
+    void addItem();
+    void use_item();
+    void addEngimon();
+    void showInventory();
+    void moveX();
+    void moveY();
+    void get_battle(Engimon enemy);
+    void get_breeding(Engimon, Engimon);
 
 Inventory
     Parent:
@@ -129,10 +125,25 @@ Inventory
 
     child:
         InventoryEngimon
-            vector<string> arrOfEngimon;
+            vector<Engimon> arrOfEngimon;
+            
+            methods:
+            //getter
+            vector<Engimon> getArrOfEngimon();
+            Engimon getEngimonByIndex();
+            
+            void addEngimon(Engimon);
+            void removeEngimon(index);
 
         InventoryItem
-            vector<string> arrOfItem;
+            vector<skill> arrOfItem;
+            methods:
+            //getter
+            vector<skill> getArrOfItem();
+            skill getSkillByIndex();
+            
+            void addSkill(Skill);
+            void removeSkill(index);
 
 Battle 
     Engimon first;
@@ -173,9 +184,29 @@ Breeding
         void inheritSkill();
         void breed();
 
+
+Position
+    int X;
+    int Y;
+
+    methods:
+    // getter
+    int get_X();
+    int get_Y();
+
+    // setter
+    void set_X(int);
+    void set_Y(int);
+
+Cell 
+    Position position;
+    CellType cellType; // belum tau
+    Content content; // belum tau
+
+
 Peta 
-    arrOfCell; // belum tau
-    arrOfEngimon; // belum tau
+    vector<Cell> arrOfCell; // belum tau
+    vector<Engimon> arrOfEngimon; // belum tau
     int sizeX;
     int sizeY;
 
@@ -187,26 +218,30 @@ Peta
 
     void generatePeta(); // 
     void legenda();
-    void spawnMoster();
+    void spawnMonster();
 
 
-Cell 
-    Position position;
-    cellType; // belum tau
-    content; // belum tau
 
-cellType // belum tau
-    enum[grassland, sea];
+enum CellType {grassland, sea};
 
-content // belum tau
-    enum[player, engimon, air];
+enum Content {player, engimon, air};
 
-gameManagement // belum tau
+GameManagement (main)
     Peta main; // update setiap saat
     Player player1;
     run(); // 
     newGame();
     continue();
      exit();
-    load();
+    loadData();
     save(); // kalo gabut
+    
+    
+Pembagian class
+
+Engimon: Ilyasa
+Skill: Faza
+Position - Cell - Peta: Karlsen
+Player - Inventory: Reyhan
+Battle: Fakhry
+Breeding: Yudi
