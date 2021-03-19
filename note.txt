@@ -110,7 +110,7 @@ Player
     void showInventory();
     void moveX(int direction);
     void moveY(int direction);
-    void moveEngimon(int dirX, int dirY);
+    void moveEngimon(int dirX, int dirY); //Kasih Exception 
     void get_battle(Engimon enemy);
     void get_breeding(Engimon, Engimon);
 
