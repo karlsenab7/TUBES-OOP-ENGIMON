@@ -91,21 +91,26 @@ Player
     Position position;
     InventoryEngimon InventoryEngimon;
     InventoryItem InventoryItem;
+    
     int activeEngimonIdx;
+    Position activeEngimonPos();
     
     method:
     //getter
     Engimon get_active_engimon();
+    Position activeEngimonPos();
     
     //setter
     void set_active_engimon();
+    Position activeEngimonPos();
     
     void addItem();
     void use_item();
     void addEngimon();
     void showInventory();
-    void moveX();
-    void moveY();
+    void moveX(int direction);
+    void moveY(int direction);
+    void moveEngimon(int dirX, int dirY);
     void get_battle(Engimon enemy);
     void get_breeding(Engimon, Engimon);
 
