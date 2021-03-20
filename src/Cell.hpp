@@ -2,83 +2,122 @@
 #ifndef __CELL_HPP__
 #define __CELL_HPP__
 
-#include "Position.hpp"
+#include "Point.hpp"
 
-
-enum CellType {grassland, sea};
-enum Content {player, engimon, air};
+enum CellType
+{
+    grassland,
+    sea
+};
+enum Content
+{
+    player,
+    engimon,
+    air
+};
 
 class Cell
 {
 private:
-    Position* position;
+    Point position;
     CellType cellType;
     Content content;
+    int idxEngimonInCell;
+
 public:
-    Cell(Position newPosition, CellType newCellType, Content newContent);  
+    Cell(Point newPosition, CellType newCellType, Content newContent);
     Cell(int pX, int pY, CellType newCellType, Content newContent);
-    ~Cell();
 
     // getter
-    Position getPosition();
+    Point getPosition();
     CellType getCellType();
+    char getCharCell();
     Content getContent();
 
     // setter
-    void setPosition(Position newPosition);
+    void setPosition(Point newPosition);
     void setPosition(int pX, int pY);
     void setCellType(CellType newCellType);
     void setContent(Content newContent);
+    void setIdxEngimonInCell(int idx);
 };
 
-Cell::Cell(Position newPosition, CellType newCellType, Content newContent)
+Cell::Cell(Point newPosition, CellType newCellType, Content newContent)
 {
-    this->position = &newPosition;
+    this->position = newPosition;
     this->cellType = newCellType;
     this->content = newContent;
 }
 
 Cell::Cell(int pX, int pY, CellType newCellType, Content newContent)
 {
-    this->position->setX(pX);
-    this->position->setY(pY);
+    this->position.setX(pX);
+    this->position.setY(pY);
     this->cellType = newCellType;
     this->content = newContent;
 }
 
-Cell::~Cell()
+Point Cell::getPosition()
 {
-    delete this->position;
+    return this->position;
 }
 
-Position Cell::getPosition() {
-    // Position cpyPosition = new Position(this->position->getX(), this->position->getY());
-    return *position;
-}
-
-CellType Cell::getCellType() {
+CellType Cell::getCellType()
+{
     return this->cellType;
 }
-Content Cell::getContent() {
+
+char Cell::getCharCell()
+{
+    if (content == Content::player)
+    {
+        return 'P';
+    }
+    else if (content == Content::engimon)
+    {
+        /* code */
+    }
+    else if (content == Content::air)
+    {
+        if (cellType == CellType::grassland)
+        {
+            return '-';
+        } else if (cellType == CellType::sea)
+        {
+            return 'o';
+        }
+    }
+}
+
+Content Cell::getContent()
+{
     return this->content;
 }
 
-void Cell::setPosition(Position newPosition) {
-    this->position->setX(newPosition.getX());
-    this->position->setY(newPosition.getY());
+void Cell::setPosition(Point newposition)
+{
+    this->position.setX(newposition.getX());
+    this->position.setY(newposition.getY());
 }
 
-void Cell::setPosition(int pX, int pY) {
-    this->position->setX(pX);
-    this->position->setY(pY);
+void Cell::setPosition(int pX, int pY)
+{
+    this->position.setX(pX);
+    this->position.setY(pY);
 }
 
-void Cell::setCellType(CellType newCellType) {
+void Cell::setCellType(CellType newCellType)
+{
     this->cellType = newCellType;
 }
 
-void Cell::setContent(Content newContent) {
+void Cell::setContent(Content newContent)
+{
     this->content = newContent;
+}
+
+void Cell::setIdxEngimonInCell(int idx) {
+    this->idxEngimonInCell = idx;
 }
 
 #endif

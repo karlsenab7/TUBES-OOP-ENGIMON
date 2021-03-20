@@ -2,52 +2,105 @@
 #ifndef __PETA_HPP__
 #define __PETA_HPP__
 
-#include "Vector.hpp"
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 #include "Cell.hpp"
+using namespace std;
 
-
-//   ____       _                    _____      _                 _ 
+//   ____       _                    _____      _                 _
 //  |  _ \     | |                  / ____|    | |               (_)
-//  | |_) | ___| |_   _ _ __ ___   | (___   ___| | ___  ___  __ _ _ 
+//  | |_) | ___| |_   _ _ __ ___   | (___   ___| | ___  ___  __ _ _
 //  |  _ < / _ \ | | | | '_ ` _ \   \___ \ / _ \ |/ _ \/ __|/ _` | |
 //  | |_) |  __/ | |_| | | | | | |  ____) |  __/ |  __/\__ \ (_| | |
 //  |____/ \___|_|\__,_|_| |_| |_| |_____/ \___|_|\___||___/\__,_|_|
-                                                                 
+
 class Peta
 {
 private:
     int sizeX;
     int sizeY;
-    Vector<Cell, 100> *arrOfCell;
-    // Vector<Engimon, 100> arrOfEngimon; // tunggu Engimon.hpp selesai
+    vector<vector<Cell>> arrOfCell;
+    vector<int> arrOfEngimon; // tunggu Engimon.hpp selesai
+
 public:
-    Peta();
-    ~Peta();
+    Peta(int x, int y);
+
+    void generatePeta();
+    void showLegend();
+    void spawnMonster(vector<int> arrOfEngimonGlobal);
+    void showPetaNLegend();
 };
 
-Peta::Peta(/* args */)
+Peta::Peta(int x, int y)
 {
+    this->sizeX = x;
+    this->sizeY = y;
+
+    for (int i = 0; i < x; i++)
+    {
+        vector<Cell> temp;
+        for (int j = 0; j < y; j++)
+        {
+            Cell c(i, j, CellType::grassland, Content::air);
+            temp.push_back(c);
+        }
+        this->arrOfCell.push_back(temp);
+    }
 }
 
-Peta::~Peta()
+void Peta::generatePeta()
 {
+    for (int i = 0; i < this->sizeX; i++)
+    {
+        for (int j = 0; j < this->sizeY; j++)
+        {
+            char ui = arrOfCell[i][j].getCharCell();
+            cout << ui;
+        }
+        cout << endl;
+    }
+    cout << endl;
 }
 
+void Peta::showLegend()
+{
+    cout << "Keterangan" << endl
+         << endl;
+    cout << "W/w: Water engimon                P: Player" << endl;
+    cout << "I/i: Ice engimon                  X: Active Engimon" << endl;
+    cout << "F/f: Fire engimon" << endl;
+    cout << "G/g: Ground engimon               - : Grassland" << endl;
+    cout << "E/e: Electric engimon             o : Sea" << endl;
+    cout << "L/l: Fire/Electric engimon" << endl;
+    cout << "S/s: Water/Ice engimon" << endl;
+    cout << "N.n: Water/Ground engimon" << endl;
+}
 
-// vector<Cell> arrOfCell; // belum tau
-//     vector<Engimon> arrOfEngimon; // belum tau
-//     int sizeX;
-//     int sizeY;
+void Peta::showPetaNLegend()
+{
+    this->generatePeta();
+    this->showLegend();
+}
 
-//     methods:
-//     // getter
+void Peta::spawnMonster(vector<int> arrOfEngimonGlobal) // ganti int dengan Engimon
+{
+    int x = 0;
+    int y = 0;
+    do
+    {
+        srand(time(nullptr)); // use current time as seed for random generator
+        x = rand() % this->sizeX;
+        y = rand() % this->sizeY;
+    } while ((arrOfCell[x][y].getContent() != Content::air));
 
-//     // setter
-
-
-//     void generatePeta(); // 
-//     void legenda();
-//     void spawnMonster();
-
+    this->arrOfCell[x][y].setContent(Content::engimon);
+    int idx = arrOfEngimon.size();
+    int i = rand() % arrOfEngimonGlobal.size();
+    arrOfEngimon.push_back(arrOfEngimonGlobal[i]);
+    arrOfCell[x][y].setIdxEngimonInCell(idx);
+    // random engimon yang dimasukkan ke cell
+}
 
 #endif
