@@ -221,11 +221,46 @@ GameManagement (main)
     run(); // 
     newGame();
     continue();
-     exit();
+    exit();
     loadData();
     save(); // kalo gabut
     
     
+
+file external:
+1. Peta
+2. Save
+    - Inventory Skill
+    - Inventory Engimon
+    - Player State
+3. Engimon
+4. Skill
+
+
+
+- Elemen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Pembagian class
 
 Engimon: Ilyasa
