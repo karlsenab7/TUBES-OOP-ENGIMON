@@ -1,3 +1,3 @@
 #include "Engimon.hpp"
 
-Engimon getNewEngimonFromDatabase(string, vector<string>);
+Engimon getNewEngimonFromDatabase(string, vector<Element>);

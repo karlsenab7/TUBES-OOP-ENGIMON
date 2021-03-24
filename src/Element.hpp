@@ -14,6 +14,7 @@ public:
 
     string get_element();
     float getAdvantage(Element);
+    friend bool operator==(Element, Element);
 };
 
 Element::Element(string el)
@@ -26,6 +27,11 @@ Element::~Element() {}
 string Element::get_element()
 {
     return this->element;
+}
+
+bool operator==(Element el1, Element el2)
+{
+    return el1.get_element() == el2.get_element();
 }
 
 float Element::getAdvantage(Element el)

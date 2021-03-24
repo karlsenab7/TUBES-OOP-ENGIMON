@@ -15,8 +15,8 @@ private:
     Engimon child;
 
     vector<Skill> inheritSkill();
-    vector<string> inheritElement(string&);
-    vector<string> getKombinasiElement(string&, string, string);
+    vector<Element> inheritElement(string&);
+    vector<Element> getKombinasiElement(string&, Element, Element);
     void setChildSkill(vector<Skill>);
     void setChildElement(vector<string>);
     void sortSkill(vector<Skill>&);
@@ -161,27 +161,27 @@ vector<Skill> Breed::inheritSkill()
     return inherit;
 }
 
-vector<string> Breed::inheritElement(string& species)
+vector<Element> Breed::inheritElement(string& species)
 {
     int numOfElement1 = first.getNumOfElement();
     int numOfElement2 = second.getNumOfElement();
 
-    vector<string> els1 = first.getElement();
-    vector<string> els2 = second.getElement();
+    vector<Element> els1 = first.getElement();
+    vector<Element> els2 = second.getElement();
 
-    vector<string> inherit;
+    vector<Element> inherit;
 
     if (numOfElement2 + numOfElement1 == 2)
     {
-        string el1 = els1[0];
-        string el2 = els2[0];
+        Element el1 = els1[0];
+        Element el2 = els2[0];
 
         inherit = getKombinasiElement(species, el1, el2);
     }
     else
     {
-        string el1 = els1[0];
-        string el2 = els2[0];
+        Element el1 = els1[0];
+        Element el2 = els2[0];
         
         inherit = getKombinasiElement(species, el1, el2);
     }
@@ -191,17 +191,17 @@ vector<string> Breed::inheritElement(string& species)
 }
 
 
-vector<string> Breed::getKombinasiElement(string& species, string el1, string el2)
+vector<Element> Breed::getKombinasiElement(string& species, Element el1, Element el2)
 {   
-    vector<string> inherit; 
+    vector<Element> inherit; 
     if (el1 == el2)
     {
         inherit.push_back(el1);
     }
     else
     {
-        int n1 = getElementAdvantage(el1, el2);
-        int n2 = getElementAdvantage(el2, el1);
+        int n1 = el1.getAdvantage(el2);
+        int n2 = el2.getAdvantage(el1);
         if (n1 == n1)
         {
             species = first.get_species_name();
@@ -230,7 +230,7 @@ Engimon Breed::breed(string name)
     vector<Skill> childSkill = inheritSkill();
     
     string species;
-    vector<string> childElement = inheritElement(species);
+    vector<Element> childElement = inheritElement(species);
 
     Engimon e = getNewEngimonFromDatabase(species, childElement);
 
