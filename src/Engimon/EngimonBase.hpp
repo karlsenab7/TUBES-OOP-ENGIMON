@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <iostream>
+#include "../Element.hpp"
 
 using namespace std;
 
@@ -13,14 +14,14 @@ class EngimonBase {
         string engimon_name;
 
         string * engimon_parents;   // always either 2 parents or 0, aman jika menggunakan array statik
-        vector<string> engimon_elements;
+        vector<Element> engimon_elements;
 
         int level, exp, cum_exp;
     
     public:
         //Constructors
         EngimonBase();
-        EngimonBase(string name, string * parents, vector<string> elements, int _level, int _exp, int _cum_exp);
+        EngimonBase(string name, string * parents, vector<Element> elements, int _level, int _exp, int _cum_exp);
         EngimonBase(const EngimonBase&);
 
         //Destructor
@@ -30,7 +31,7 @@ class EngimonBase {
         int get_engimon_id();
         string get_engimon_name();
         string * get_engimon_parents();
-        vector<string> get_engimon_elements();
+        vector<Element> get_engimon_elements();
 
         int get_level();
         int get_exp();
@@ -39,7 +40,7 @@ class EngimonBase {
         //Setter
         void set_engimon_name(string);
         void set_engimon_parents(string *);
-        void set_engimon_elements(vector<string>);
+        void set_engimon_elements(vector<Element>);
         void set_level(int);
         void set_exp(int);
         void set_cum_exp(int);
