@@ -6,6 +6,8 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
+#include <string>
 #include "Cell.hpp"
 using namespace std;
 
@@ -52,16 +54,39 @@ Peta::Peta(int x, int y)
 
 void Peta::generatePeta()
 {
-    for (int i = 0; i < this->sizeX; i++)
-    {
-        for (int j = 0; j < this->sizeY; j++)
-        {
-            char ui = arrOfCell[i][j].getCharCell();
-            cout << ui;
-        }
-        cout << endl;
-    }
-    cout << endl;
+    // for (int i = 0; i < this->sizeX; i++)
+    // {
+    //     for (int j = 0; j < this->sizeY; j++)
+    //     {
+    //         char ui = arrOfCell[i][j].getCharCell();
+    //         cout << ui;
+    //     }
+    //     cout << endl;
+    // }
+    // cout << endl;
+    string filename;
+    string dir = "map/";
+	string myText;
+    cin >> filename;
+	cout << endl;
+	ifstream MyReadFile(dir + filename); // buka file
+
+	if (MyReadFile.is_open()) // jika file berhasil terbuka
+	{
+		while (getline(MyReadFile, myText))
+		{
+			// memproses masukkan dari file agar dapat dibaca oleh program
+			cout << myText << endl;
+		}
+	}
+	else
+	{
+		cout << "format file salah atau file tidak ditemukan" << endl;
+	}
+	cout << endl;
+	
+	// menutup file
+	MyReadFile.close();
 }
 
 void Peta::showLegend()

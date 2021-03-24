@@ -2,47 +2,38 @@
 #ifndef __CELL_HPP__
 #define __CELL_HPP__
 
-#include "Point.hpp"
+#include "Position.hpp"
 
-enum CellType
-{
-    grassland,
-    sea
-};
-enum Content
-{
-    player,
-    engimon,
-    air
-};
+enum CellType {grassland, sea};
+enum Content {player, engimon, air};
 
 class Cell
 {
 private:
-    Point position;
+    Position position;
     CellType cellType;
     Content content;
     int idxEngimonInCell;
 
 public:
-    Cell(Point newPosition, CellType newCellType, Content newContent);
+    Cell(Position newPosition, CellType newCellType, Content newContent);
     Cell(int pX, int pY, CellType newCellType, Content newContent);
 
     // getter
-    Point getPosition();
+    Position getPosition();
     CellType getCellType();
     char getCharCell();
     Content getContent();
 
     // setter
-    void setPosition(Point newPosition);
+    void setPosition(Position newPosition);
     void setPosition(int pX, int pY);
     void setCellType(CellType newCellType);
     void setContent(Content newContent);
     void setIdxEngimonInCell(int idx);
 };
 
-Cell::Cell(Point newPosition, CellType newCellType, Content newContent)
+Cell::Cell(Position newPosition, CellType newCellType, Content newContent)
 {
     this->position = newPosition;
     this->cellType = newCellType;
@@ -57,7 +48,7 @@ Cell::Cell(int pX, int pY, CellType newCellType, Content newContent)
     this->content = newContent;
 }
 
-Point Cell::getPosition()
+Position Cell::getPosition()
 {
     return this->position;
 }
@@ -94,7 +85,7 @@ Content Cell::getContent()
     return this->content;
 }
 
-void Cell::setPosition(Point newposition)
+void Cell::setPosition(Position newposition)
 {
     this->position.setX(newposition.getX());
     this->position.setY(newposition.getY());
