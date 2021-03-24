@@ -6,10 +6,10 @@
 using namespace std;
 
 //Static var
-int EngimonBase::engimon_id = 0;
+int EngimonBase::numOfCreated = 1;
 
 //Constructor
-EngimonBase::EngimonBase() : id(engimon_id + 1)
+EngimonBase::EngimonBase() : engimon_id(numOfCreated)
 {
     engimon_name = "-";
     level = 0;
@@ -19,10 +19,12 @@ EngimonBase::EngimonBase() : id(engimon_id + 1)
     engimon_elements.assign(2, "none");
 
     engimon_parents = new string [2];
-    for int i = 0; i < 2; i++) {engimon_parents[i] = "-"}
+    for (int i = 0; i < 2; i++) {engimon_parents[i] = "-";}
+
+    numOfCreated += 1;
 }
 
-EngimonBase::EngimonBase(string name, string * parents, vector<string> elements, int _level, int _exp, int _cum_exp) : id(engimon_id + 1)
+EngimonBase::EngimonBase(string name, string * parents, vector<string> elements, int _level, int _exp, int _cum_exp) : engimon_id(numOfCreated)
 {
     engimon_name = name;
     level = _level;
@@ -32,22 +34,24 @@ EngimonBase::EngimonBase(string name, string * parents, vector<string> elements,
     engimon_elements = elements;
 
     engimon_parents = new string [2];
-    for int i = 0; i < 2; i++) {engimon_parents[i] = parents[i]}
+    for (int i = 0; i < 2; i++) {engimon_parents[i] = parents[i];}
+
+    numOfCreated += 1;
 }
 
-EngimonBase::EngimonBase(const EngimonBase& other) : id(engimon_id + 1)
+EngimonBase::EngimonBase(const EngimonBase& other) : engimon_id(numOfCreated)
 {
-    Engimon(other.engimon_name, other.engimon_parents, other.engimon_elements, other.level, other.exp, other.cum_exp);
+    EngimonBase(other.engimon_name, other.engimon_parents, other.engimon_elements, other.level, other.exp, other.cum_exp);
 }
 
 //Destructor
 EngimonBase::~EngimonBase() {
     delete[] engimon_parents;
-    ~engimon_elements;
+    //~engimon_elements;
 }
 
 //Getter
-string EngimonBase::get_engimon_id() { return engimon_id; }
+int EngimonBase::get_engimon_id() { return engimon_id; }
 string EngimonBase::get_engimon_name() { return engimon_name; }
 string * EngimonBase::get_engimon_parents() { return engimon_parents; }  
 vector<string> EngimonBase::get_engimon_elements() { return engimon_elements; }

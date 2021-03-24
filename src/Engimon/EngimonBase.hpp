@@ -8,7 +8,8 @@ using namespace std;
 
 class EngimonBase {
     private:
-        static int engimon_id;
+        static int numOfCreated;
+        const int engimon_id;
         string engimon_name;
 
         string * engimon_parents;   // always either 2 parents or 0, aman jika menggunakan array statik
@@ -20,13 +21,13 @@ class EngimonBase {
         //Constructors
         EngimonBase();
         EngimonBase(string name, string * parents, vector<string> elements, int _level, int _exp, int _cum_exp);
-        EngimonBase(const EngimonBase&)
+        EngimonBase(const EngimonBase&);
 
         //Destructor
         ~EngimonBase();
 
         //Getter
-        string get_engimon_id();
+        int get_engimon_id();
         string get_engimon_name();
         string * get_engimon_parents();
         vector<string> get_engimon_elements();
