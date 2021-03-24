@@ -246,21 +246,6 @@ file external:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Pembagian class
 
 Engimon: Ilyasa

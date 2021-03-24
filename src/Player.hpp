@@ -3,8 +3,9 @@
 
 #include "Position.hpp"
 #include "Inventory.hpp"
-//#include "Peta.hpp"
-//#include "Engimon.hpp"
+#include "Peta.hpp"
+#include "Engimon.hpp"
+#include "Breed.hpp"
 //#include "Item.hpp"
 
 //-------------------------------------
@@ -15,12 +16,13 @@
 #define default_player_posX 0
 #define default_player_posY 0
 
-class Player{
+class Player
+{
     private:
         Position position;
         Position activeEngimonPosition;
         Inventory<Engimon> inventoryEngimon;
-        Inventory<Item> inventoryItem;
+        //Inventory<Item> inventoryItem;
         int activeEngimonIdx;
         int max_capacity;
     
@@ -36,9 +38,10 @@ class Player{
         //setter
         void set_active_engimon(int engimonIdx);
         void set_active_engimon_pos(Position *pos);
-        
+        void change_active_engimon();
+
         Position activeEngimonPos();
-        void addItem(Item what);
+        //void addItem(Item what);
         void use_item();
         void addEngimon(Engimon currEngimon);
         void addSkill(Skill itemSkill);
@@ -46,11 +49,19 @@ class Player{
         void moveX(int direction);
         void moveY(int direction);
         void moveEngimon(int dirX, int dirY); //Kasih Exception 
-        void get_battle(Engimon enemy);
-        void get_breeding(Engimon, Engimon);
-}
+        void get_battle();
+        void get_breeding();
+        void moveUP();
+        void moveDOWN();
+        void moveRIGHT();
+        void moveLEFT();
+};
 
-Player::Player() : position(default_player_posX,default_player_posY), activeEngimonIdx(-1), max_capacity(default_max_inven_cap) {} //Untuk sekarang -1 artinya tidak ada Engimon
+Player::Player() : position(default_player_posX,default_player_posY), activeEngimonIdx(-1), max_capacity(default_max_inven_cap) 
+//Untuk sekarang -1 artinya tidak ada Engimon
+{
+
+} 
 
 Player::~Player()
 {
@@ -86,11 +97,11 @@ void Player::set_active_engimon_pos(Position *pos)
     this->activeEngimonPosition.setY(pos->getY());
 }
 
-void Player::addItem(Item what)
-{
-    //Cek apakah masih muat
-    this->inventoryItem.addInventory(what);
-}
+// void Player::addItem(Item what)
+// {
+//     //Cek apakah masih muat
+//     this->inventoryItem.addInventory(what);
+// }
 
 void Player::use_item()
 {
@@ -121,19 +132,55 @@ void Player::moveY(int direction)
     //belum implementasiin batas di peta
 }
 
+void Player::moveUP()
+{
+    moveY(-1);
+}
+
+void Player::moveDOWN()
+{
+    moveY(1);
+}
+
+void Player::moveRIGHT()
+{
+    moveX(1);
+}
+
+void Player::moveLEFT()
+{
+    moveX(-1);
+}
+
 void Player::moveEngimon(int dirX, int dirY) //Kasih Exception 
 {
     //implementasi move engumon
     //Kemungkinan besar menyimpan posisi player sebelumnya
 }
 
-void Player::get_battle(Engimon enemy)
+void Player::get_battle()
 {
     //??????
 }
 
-void Player::get_breeding(Engimon, Engimon)
+void Player::get_breeding()
 {
+    int idxE1 = 0;
+    int idxE2 = 1;
+    Engimon e1 = inventoryEngimon.getInventoryByIndex(idxE1);
+    Engimon e2 = inventoryEngimon.getInventoryByIndex(idxE2);
+
+    string name;
+    cout << "Give name for child : ";
+    cin >> name;
+
+    Breed breed(e1, e2, name);
+
+    cout << "Breeding selesai!!" << endl;
+    Engimon child = breed.get_child();
+
+    inventoryEngimon.addInventory(child);
+
     //implementasi breeding (????????)
     //mungkin ini maksudnya proses breedingnya?
 }

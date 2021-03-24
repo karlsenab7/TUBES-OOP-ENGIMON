@@ -1,9 +1,9 @@
 #ifndef __INVENTORY_HPP__
-#define __iNVENTORY_HPP__
+#define __INVENTORY_HPP__
 
-#include "Position.hpp"
-#include <vector>
 #include <iostream>
+#include <vector>
+// #include "Position.hpp"
 
 using namespace std;
 

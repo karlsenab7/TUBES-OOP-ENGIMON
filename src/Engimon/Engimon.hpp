@@ -6,6 +6,7 @@
 //#include "../Skill.hpp" //Menunggu skill
 #include "EngimonBase.hpp"
 //#include "EngimonBase.cpp"
+#include "../Breed.hpp"
 
 using namespace std;
 
