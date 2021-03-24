@@ -21,7 +21,7 @@ class Engimon : public EngimonBase {
             //engimon_skills.push_back("Tackle"); //ubah argumen string menjadi skill
         }
 
-        Engimon(string name, string * parents, vector<string> elements, int _level, int _exp, int _cum_exp, string species) : EngimonBase(name, parents, elements, _level, _exp, _cum_exp) {
+        Engimon(string name, string * parents, vector<Element> elements, int _level, int _exp, int _cum_exp, string species) : EngimonBase(name, parents, elements, _level, _exp, _cum_exp) {
             species_name = species;
         }
 
@@ -51,6 +51,20 @@ class Engimon : public EngimonBase {
         //void set_engimon_skills(vector<Skill> skills) { engimon_skills = skills; }
 
         //Additional methods
+        void print_details() {
+            cout << "Engimon ID: " << get_engimon_id() << endl;
+            cout << "Name: " << get_engimon_name() << endl;
+            cout << "Species: " << get_species_name() << endl;
+            cout << "level: " << get_level() << endl;
+            cout << "Exp: " << get_exp() << endl;
+            cout << "Cummulative Exp: " << get_cum_exp() << endl;
+            int i;
+            for (i = 0; i < get_engimon_elements().size(); i++) { cout << get_engimon_elements()[i].get_element() << " "; }
+            cout << endl;
+            for (i = 0; i < 2; i++) { cout << get_engimon_parents()[i] << " "; }
+            cout << endl;
+            
+        }
         //void add_skill(Skill skill) {
             //if (engimon_skills.size < 4)
             //{

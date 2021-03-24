@@ -15,8 +15,8 @@ EngimonBase::EngimonBase() : engimon_id(numOfCreated)
     level = 0;
     exp = 0;
     cum_exp = 0;
-
-    engimon_elements.assign(2, "none");
+    
+    engimon_elements.assign(1, Element("Fire"));
 
     engimon_parents = new string [2];
     for (int i = 0; i < 2; i++) {engimon_parents[i] = "-";}
@@ -24,7 +24,7 @@ EngimonBase::EngimonBase() : engimon_id(numOfCreated)
     numOfCreated += 1;
 }
 
-EngimonBase::EngimonBase(string name, string * parents, vector<string> elements, int _level, int _exp, int _cum_exp) : engimon_id(numOfCreated)
+EngimonBase::EngimonBase(string name, string * parents, vector<Element> elements, int _level, int _exp, int _cum_exp) : engimon_id(numOfCreated)
 {
     engimon_name = name;
     level = _level;
@@ -39,9 +39,17 @@ EngimonBase::EngimonBase(string name, string * parents, vector<string> elements,
     numOfCreated += 1;
 }
 
-EngimonBase::EngimonBase(const EngimonBase& other) : engimon_id(numOfCreated)
+EngimonBase::EngimonBase(const EngimonBase& other) : engimon_id(other.engimon_id)
 {
-    EngimonBase(other.engimon_name, other.engimon_parents, other.engimon_elements, other.level, other.exp, other.cum_exp);
+    engimon_name = other.engimon_name;
+    level = other.level;
+    exp = other.exp;
+    cum_exp = other.cum_exp;
+
+    engimon_elements = other.engimon_elements;
+
+    engimon_parents = new string [2];
+    for (int i = 0; i < 2; i++) {engimon_parents[i] = other.engimon_parents[i];}
 }
 
 //Destructor
@@ -54,7 +62,7 @@ EngimonBase::~EngimonBase() {
 int EngimonBase::get_engimon_id() { return engimon_id; }
 string EngimonBase::get_engimon_name() { return engimon_name; }
 string * EngimonBase::get_engimon_parents() { return engimon_parents; }  
-vector<string> EngimonBase::get_engimon_elements() { return engimon_elements; }
+vector<Element> EngimonBase::get_engimon_elements() { return engimon_elements; }
 int EngimonBase::get_level() { return level; }
 int EngimonBase::get_exp() { return exp; }
 int EngimonBase::get_cum_exp() { return cum_exp; }
@@ -64,7 +72,7 @@ void EngimonBase::set_engimon_name(string name) { engimon_name = name; }
 void EngimonBase::set_engimon_parents(string * parents) {
     for(int i = 0; i < 2; i++) { engimon_parents[i] = parents[i]; }
 }
-void EngimonBase::set_engimon_elements(vector<string> elements) { engimon_elements = elements; };
+void EngimonBase::set_engimon_elements(vector<Element> elements) { engimon_elements = elements; };
 void EngimonBase::set_level(int _level) { level = _level; }
 void EngimonBase::set_exp(int _exp) { exp = _exp; }
 void EngimonBase::set_cum_exp(int _cum_exp) { cum_exp = _cum_exp; }
