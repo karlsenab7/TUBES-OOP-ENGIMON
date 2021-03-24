@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <vector>
-#include "Engimon.hpp"
-#include "Database.hpp"
+#include "folderEngimon/Engimon.hpp"
+//#include "Database.hpp"
+#include "Element.hpp"
 using namespace std;
 
 class Breed
@@ -21,7 +22,7 @@ private:
     void setChildElement(vector<string>);
     void sortSkill(vector<Skill>&);
     int isExistSkill(vector<Skill>, Skill);
-    int getElementAdvantage(string, string);
+    // int getElementAdvantage(string, string);
 
 public:
     Breed(Engimon, Engimon, string);
@@ -39,6 +40,7 @@ public:
     void set_second(Engimon);
     void giveName(string);
     
+    Engimon getNewEngimonFromDatabase(string, vector<Element>);
 };
 
 Breed::Breed(Engimon e1, Engimon e2, string name)

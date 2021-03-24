@@ -4,7 +4,7 @@
 #include "Position.hpp"
 #include "Inventory.hpp"
 #include "Peta.hpp"
-#include "Engimon.hpp"
+#include "folderEngimon/Engimon.hpp"
 #include "Breed.hpp"
 //#include "Item.hpp"
 
@@ -19,6 +19,7 @@
 class Player
 {
     private:
+        string name;
         Position position;
         Position activeEngimonPosition;
         Inventory<Engimon> inventoryEngimon;
@@ -55,6 +56,9 @@ class Player
         void moveDOWN();
         void moveRIGHT();
         void moveLEFT();
+
+        // IMPLEMENTASI
+        void set_name(string);
 };
 
 Player::Player() : position(default_player_posX,default_player_posY), activeEngimonIdx(-1), max_capacity(default_max_inven_cap) 

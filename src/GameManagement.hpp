@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 class GameManagement
 {
 private:
@@ -35,6 +34,19 @@ GameManagement::GameManagement() : map(10, 10)
 
 GameManagement::~GameManagement()
 {
+}
+
+void GameManagement::newGame()
+{
+    string name = "";
+    while (name.length() != 0)
+    {
+        cout << "Masukkan nama anda : ";
+        cin >> name;
+    }
+    
+    p.set_name(name);
+    loadData();
 }
 
 void GameManagement::run()

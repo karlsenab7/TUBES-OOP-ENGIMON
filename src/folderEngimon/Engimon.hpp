@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <iostream>
-//#include "../Skill.hpp" //Menunggu skill
+#include "../Skill.hpp" //Menunggu skill
 #include "EngimonBase.hpp"
 //#include "EngimonBase.cpp"
 #include "../Breed.hpp"

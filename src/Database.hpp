@@ -1,3 +1,14 @@
-#include "Engimon.hpp"
+#ifndef __DATABASE_HPP__
+#define __DATABASE_HPP__
 
-Engimon getNewEngimonFromDatabase(string, vector<Element>);
+#include <iostream>
+#include "folderEngimon/Engimon.hpp"
+using namespace std;
+
+Engimon getNewEngimonFromDatabase(string species, vector<Element> els)
+{
+
+}
+
+
+#endif
