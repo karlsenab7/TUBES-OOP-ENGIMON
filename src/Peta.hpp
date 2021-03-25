@@ -29,18 +29,33 @@ private:
 public:
     Peta();
 
+    // getter
+    int getSizeX();
+    int getSizeY();
+
+    // setter
+    void Peta::setCell(int pX, int pY, Cell c);
+
     void generatePeta();
     void showPeta();
     void showLegend();
     void spawnMonster(vector<int> arrOfEngimonGlobal);
     void showPetaNLegend();
-    void Peta::setCell(int pX, int pY, Cell c);
+    
 };
 
 Peta::Peta()
 {
     // arrOfCell = new vector<vector<Cell>>();
     generatePeta();
+}
+
+int Peta::getSizeX() {
+    return this->sizeX;
+}
+
+int Peta::getSizeY() {
+    return this->sizeY;
 }
 
 void Peta::generatePeta()
