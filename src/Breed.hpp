@@ -15,14 +15,7 @@ private:
     Engimon second;
     Engimon child;
 
-    vector<Skill> inheritSkill();
-    vector<Element> inheritElement(string&);
-    vector<Element> getKombinasiElement(string&, Element, Element);
-    void setChildSkill(vector<Skill>);
-    void setChildElement(vector<string>);
-    void sortSkill(vector<Skill>&);
-    int isExistSkill(vector<Skill>, Skill);
-    // int getElementAdvantage(string, string);
+    
 
 public:
     Breed(Engimon, Engimon, string);
@@ -41,6 +34,15 @@ public:
     void giveName(string);
     
     Engimon getNewEngimonFromDatabase(string, vector<Element>);
+
+    vector<Skill> inheritSkill();
+    vector<Element> inheritElement(string&);
+    vector<Element> getKombinasiElement(string&, Element, Element);
+    void setChildSkill(vector<Skill>);
+    void setChildElement(vector<string>);
+    void sortSkill(vector<Skill>&);
+    int isExistSkill(vector<Skill>, Skill);
+    // int getElementAdvantage(string, string);
 };
 
 Breed::Breed(Engimon e1, Engimon e2, string name)

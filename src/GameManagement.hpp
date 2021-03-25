@@ -28,7 +28,7 @@ public:
 
 };
 
-GameManagement::GameManagement() : map(10, 10)
+GameManagement::GameManagement() : map()
 {
 }
 
