@@ -103,8 +103,11 @@ void Player::set_active_engimon_pos(Position *pos)
 
 // void Player::addItem(Item what)
 // {
-//     //Cek apakah masih muat
-//     this->inventoryItem.addInventory(what);
+//     if(this->max_capacity < this->inventoryEngimon.getTotalItem()){
+//        this->inventoryItem.addInventory(what);   
+//    } else {
+//        throw "Inventory Penuh";
+//    }
 // }
 
 void Player::use_item()
@@ -114,17 +117,30 @@ void Player::use_item()
 
 void Player::addEngimon(Engimon currEngimon)
 {
-    this->inventoryEngimon.addInventory(currEngimon);
+    if(this->max_capacity < this->inventoryEngimon.getTotalItem()){
+        this->inventoryEngimon.addInventory(currEngimon);
+    } else {
+        throw "Inventory Penuh";
+    }
 }
 
 void Player::showInventory()
 {
-    //implementasi show inventory
+    cout << "Engimon : " << endl;
+    for(int i = 0; i < this->inventoryEngimon.getTotalItem(); i++){
+        cout << this->inventoryEngimon.getInventoryByIndex(i).get_engimon_name() << endl;
+    }
+    /*
+    cout << endl << "Skill Item : " << endl;
+    for(int i = 0; i < this->inventoryItem.getTotalItem() ; i++){
+        cout << this->inventoryItem.getInventoryByIndex(i) << " : ";
+        cout << this->inventoryItem.getInventoryCountByIndex(i) << endl;
+    }
+    */
 }
 
 void Player::moveX(int direction)
 {
-    //Untuk sementara begini
     this->position.setX(this->position.getX() + direction);
     //belum implementasiin batas di peta
 }

@@ -33,6 +33,16 @@ class Inventory
         int getInventoryCountByIndex(int index);
         T& getInventoryByIndex(int index);
         int getJumlahItem(int index);
+        int getJumlahItem(int index){
+            return this->countElement[i];
+        }
+        int getTotalItem(){
+            int sum = 0;
+            for(int i = 0; i < this->countElement.size(); i++){
+                sum += this->countElement[i];
+            }
+            return sum;
+        }
 
         // setter
         void set_max_capacity(int newMax);
@@ -146,6 +156,13 @@ void Inventory<T>::addInventory(const T& items)
     //cout << "Barang ditambahkan" << endl;
 }
 
+void Inventory<Engimon>::addInventory(const Engimon& items)
+{
+    this->total_stored_item = this->total_stored_item + 1;
+    this->arrOfElements.push_back(items);
+    this->countElement.push_back(1);
+}
+
 template <class T>
 void Inventory<T>::removeInventory(int index)
 {
@@ -163,6 +180,22 @@ void Inventory<T>::removeInventory(int index)
                 }
                 this->total_stored_item = this->total_stored_item - 1;
             }
+        }
+    }
+}
+
+void Inventory<Engimon>::removeInventory(int index)
+{
+    if(this->arrOfElements.empty() == false){
+        int j = 0;
+        vector<int>::iterator k = this->countElement.begin();
+        for (auto i = this->arrOfElements.begin(); i != this->arrOfElements.end(); i++, j++, k++)
+        {
+            if(j == index){
+                    this->arrOfElements.erase(i);
+                    this->countElement.erase(i);
+                }
+            this->total_stored_item = this->total_stored_item - 1;
         }
     }
 }
