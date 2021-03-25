@@ -3,40 +3,41 @@
 
 #include <vector>
 #include <iostream>
-//#include "../Skill.hpp" //Menunggu skill
-#include "Engimon/EngimonBase.hpp"
-//#include "EngimonBase.cpp"
-#include "Breed.hpp"
+#include "Skill.hpp"
+//#include "Skill.cpp"
+#include "folderEngimon/EngimonBase.hpp"
+//#include "folderEngimon/EngimonBase.cpp"
+//#include "Breed.hpp"
 
 using namespace std;
 
 class Engimon : public EngimonBase {
     private:
         string species_name;
-        //vector<Skill> engimon_skills;
+        vector<Skill> engimon_skills;
 
     public:
         //Constructor
         Engimon() : EngimonBase() {
             species_name = "-";
-            //engimon_skills.push_back("Tackle"); //ubah argumen string menjadi skill
+
+            // Maksudnya masukin skill default, perubahan mengikuti Skill.hpp
+            int learnableBy[1] = {1};
+            Skill ember = Skill("1", "Ember", "Fire", learnableBy, 10, "Default Skill", false, "-");
+            engimon_skills.push_back(ember);
         }
 
-        Engimon(string name, string * parents, vector<Element> elements, int _level, int _exp, int _cum_exp, string species) : EngimonBase(name, parents, elements, _level, _exp, _cum_exp) {
+        Engimon(string name, string * parents, vector<Element> elements, int _level, int _exp, int _cum_exp, string species, vector<Skill> skills) : EngimonBase(name, parents, elements, _level, _exp, _cum_exp) {
             species_name = species;
+            engimon_skills = skills;
         }
-
-        //Engimon(string name, string * parents, vector<string> elements, int _level, int _exp, int _cum_exp, string species, vector<Skill> skills) : EngimonBase(name, parents, elements, _level, _exp, _cum_exp) {
-            //species_name = species;
-            //engimon_skills = skills;
-        //}
 
         Engimon(const Engimon& other) : EngimonBase(other) {
             species_name = other.species_name;
-            //engimon_skills = other.engimon_skills;
+            engimon_skills = other.engimon_skills;
         }
 
-        //Destructor
+        //Destructor (mungkin bisa menggunakan destructor dari EngimonBase)
         //~Engimon() : {
             //delete[] engimon_parents;
             //~engimon_elements;
@@ -45,11 +46,11 @@ class Engimon : public EngimonBase {
 
         //Getter
         string get_species_name() { return species_name; }
-        //vector<Skill> get_engimon_skills() { return engimon_skills; }
+        vector<Skill> get_engimon_skills() { return engimon_skills; }
 
         //Setter
         void set_species_name(string species) { species_name = species; }
-        //void set_engimon_skills(vector<Skill> skills) { engimon_skills = skills; }
+        void set_engimon_skills(vector<Skill> skills) { engimon_skills = skills; }
 
         //Additional methods
         void print_details() {
@@ -64,31 +65,73 @@ class Engimon : public EngimonBase {
             cout << endl;
             for (i = 0; i < 2; i++) { cout << get_engimon_parents()[i] << " "; }
             cout << endl;
+            for (i = 0; i < get_engimon_skills().size(); i++) { cout << get_engimon_skills()[i].getName() << " "; }
+            cout << endl;
             
         }
-        //void add_skill(Skill skill) {
-            //if (engimon_skills.size < 4)
-            //{
-                //engimon_skills.push_back(skill);
-            //} else
-            //{
-                //throw "skill full"; //Mungkin penanganan catch-nya diarahkan ke prosedur change_skill
-            //}
-        //}
+        void add_skill(Skill skill) {
+            if (engimon_skills.size() < 4)
+            {
+                engimon_skills.push_back(skill);
+            } else
+            {
+                throw "skill full"; //Mungkin penanganan catch-nya diarahkan ke prosedur change_skill
+            }
+        }
 
         //Prekondisi skill engimon sudah 4 (penuh)
-        //void change_skill(Skill skill, Skill * replaced) {
-            //for (int i = 0; i < 4; i++) {
-                //if (engimon_skills.at(i) == *replaced)
-                //{
-                    //engimon_skills.at(i) = skill;
-                    //return;
-                //}
-            //}
+        void change_skill(Skill skill, Skill replaced) {
+            for (int i = 0; i < 4; i++) {
+                if (engimon_skills.at(i).getID() == replaced.getID())
+                {
+                    engimon_skills.at(i) = skill;
+                    return;
+                }
+            }
 
-            //throw "No such skill";
-        //}
+            cout << "No such skill" << endl;
+            throw "No such skill";
+        }
+
+        //Menerima indeks dalam vector<Skill>, mengubah skill di idx tertentu
+        void change_skill_alt(Skill skill, int idx) {
+            if (idx == 0)
+            {
+                cout << "Cannot change unique skill" << endl;
+                throw "Cannot change unique skill";
+            } else
+            {
+                engimon_skills.at(idx) = skill;
+            }
+        }
+
+        // Untuk testing dan contoh penggunaan; comment atau hapus saat header akan digunakan
+        // Note, elemen di skill masih berupa string, belum class element
+        int test_main() {
+            Engimon misingno = Engimon();
+
+            int learnableBy[1] = {1};
+            Skill shock = Skill("1", "Shock", "Electric", learnableBy, 10, "Delivers mild shock", false, "-");
+            vector<Skill> pikachuSkill = {shock};
+
+            vector<Element> pikachuElement = {Element("Electric")};
+            string parents[2] = {"-", "-"};
+    
+            Engimon pikachu = Engimon("-", parents, pikachuElement, 1, 1, 1, "Pikachu", pikachuSkill);
+            Engimon pikachu2 = Engimon(pikachu);
+
+            pikachu2.set_engimon_name("Pikapi");
+            Skill charge = Skill("1", "Charge", "Electric", learnableBy, 5, "Delivers weak static charge", false, "-");
+            pikachu2.add_skill(charge);
+
+            misingno.print_details();
+            pikachu.print_details();
+            pikachu2.print_details();
+            return 0;
+        }
 
 };
 
 #endif
+
+
