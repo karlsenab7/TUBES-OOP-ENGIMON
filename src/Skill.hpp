@@ -1,16 +1,16 @@
 #ifndef Skill_HPP
 #define Skill_HPP
-
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include "Repo/src/Element.hpp"
 using namespace std;
 class Skill {
     private:
         string ID;
         string name;
-        string element;
-        int* learnableBy; 
+        vector<Element> element;
         int power;
         int mastery;
         string description;
@@ -18,24 +18,21 @@ class Skill {
         string uniqueTo;
     public:
         //Konstruktor
-        Skill(string ID, string name, string element, int* learnableBy, int power, string desc, bool isUnique, string uniqueTo);
+        Skill(string ID, string name, vector<Element> element, int power, string desc, bool isUnique, string uniqueTo);
         //CC
         Skill(const Skill& s);
         //OpAssign
         Skill& operator=(const Skill& s);
-        //Destruktor
-        ~Skill();
         // getter
         string getID();
         string getName();
-        string getElement();
+        vector<Element> getElement();
         int getPower();
         int getMastery();
-        void setMastery(int);
         string getDescription();
         // Lain-Lain
         void masteryUp();
-        bool canBeLearned(string element);
+        bool canBeLearned(Element element);
+        void print();
 };
-
 #endif
