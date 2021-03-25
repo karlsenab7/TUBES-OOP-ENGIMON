@@ -2,7 +2,8 @@
 
 int main(int argc, char const *argv[])
 {
-    Peta *p = new Peta(20,20);
-    p->generatePeta();
+    Peta *p = new Peta();
+    p->showPeta();
+    p->showLegend();
     return 0;
 }

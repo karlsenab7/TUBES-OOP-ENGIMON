@@ -27,57 +27,53 @@ private:
     vector<int> arrOfEngimon; // tunggu Engimon.hpp selesai
 
 public:
-    Peta(int x, int y);
+    Peta();
 
     void generatePeta();
+    void showPeta();
     void showLegend();
     void spawnMonster(vector<int> arrOfEngimonGlobal);
     void showPetaNLegend();
 };
 
-Peta::Peta(int x, int y)
+Peta::Peta()
 {
-    this->sizeX = x;
-    this->sizeY = y;
-
-    for (int i = 0; i < x; i++)
-    {
-        vector<Cell> temp;
-        for (int j = 0; j < y; j++)
-        {
-            Cell c(i, j, CellType::grassland, Content::air);
-            temp.push_back(c);
-        }
-        this->arrOfCell.push_back(temp);
-    }
+    // arrOfCell = new vector<vector<Cell>>();
+    generatePeta();
 }
 
 void Peta::generatePeta()
 {
-    // for (int i = 0; i < this->sizeX; i++)
-    // {
-    //     for (int j = 0; j < this->sizeY; j++)
-    //     {
-    //         char ui = arrOfCell[i][j].getCharCell();
-    //         cout << ui;
-    //     }
-    //     cout << endl;
-    // }
-    // cout << endl;
     string filename;
-    string dir = "map/";
+    string dir = "map/map1.txt";
 	string myText;
-    cin >> filename;
+    // cin >> filename;
 	cout << endl;
-	ifstream MyReadFile(dir + filename); // buka file
+	ifstream MyReadFile(dir); // buka file
 
 	if (MyReadFile.is_open()) // jika file berhasil terbuka
 	{
+        int j = 0;
 		while (getline(MyReadFile, myText))
 		{
 			// memproses masukkan dari file agar dapat dibaca oleh program
-			cout << myText << endl;
+			vector<Cell> temp;
+            for (int i = 0; i < myText.length(); i++)
+            {
+                
+                if (myText[i] == 'o') {
+                    Cell c(i, j, CellType::sea, Content::air);
+                    temp.push_back(c);
+                } else {
+                    Cell c(i, j, CellType::grassland, Content::air);
+                    temp.push_back(c);
+                }
+            }
+            j++;
+            this->arrOfCell.push_back(temp);
 		}
+        this->sizeX = arrOfCell.size();
+        this->sizeY = arrOfCell[0].size();
 	}
 	else
 	{
@@ -87,6 +83,19 @@ void Peta::generatePeta()
 	
 	// menutup file
 	MyReadFile.close();
+}
+
+void Peta::showPeta() {
+    for (int i = 0; i < this->sizeX; i++)
+    {
+        for (int j = 0; j < this->sizeY; j++)
+        {
+            char ui = arrOfCell[i][j].getCharCell();
+            cout << ui;
+        }
+        cout << endl;
+    }
+    cout << endl;
 }
 
 void Peta::showLegend()
