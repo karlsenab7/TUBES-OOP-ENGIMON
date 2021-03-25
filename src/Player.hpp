@@ -4,7 +4,7 @@
 #include "Position.hpp"
 #include "Inventory.hpp"
 #include "Peta.hpp"
-#include "folderEngimon/Engimon.hpp"
+// #include "folderEngimon/Engimon.hpp"
 #include "Breed.hpp"
 //#include "Item.hpp"
 
@@ -22,7 +22,7 @@ class Player
         string name;
         Position position;
         Position activeEngimonPosition;
-        Inventory<Engimon> inventoryEngimon;
+        // Inventory<Engimon> inventoryEngimon;
         //Inventory<Item> inventoryItem;
         int activeEngimonIdx;
         int max_capacity;

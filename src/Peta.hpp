@@ -34,6 +34,7 @@ public:
     void showLegend();
     void spawnMonster(vector<int> arrOfEngimonGlobal);
     void showPetaNLegend();
+    void Peta::setCell(int pX, int pY, Cell c);
 };
 
 Peta::Peta()
@@ -135,6 +136,10 @@ void Peta::spawnMonster(vector<int> arrOfEngimonGlobal) // ganti int dengan Engi
     arrOfEngimon.push_back(arrOfEngimonGlobal[i]);
     arrOfCell[x][y].setIdxEngimonInCell(idx);
     // random engimon yang dimasukkan ke cell
+}
+
+void Peta::setCell(int pX, int pY, Cell c) {
+    this->arrOfCell[pX][pY] = c;
 }
 
 #endif

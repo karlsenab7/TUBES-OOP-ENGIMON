@@ -18,6 +18,7 @@ private:
 public:
     Cell(Position newPosition, CellType newCellType, Content newContent);
     Cell(int pX, int pY, CellType newCellType, Content newContent);
+    Cell Cell::operator=(const Cell& otherCell);
 
     // getter
     Position getPosition();
@@ -46,6 +47,14 @@ Cell::Cell(int pX, int pY, CellType newCellType, Content newContent)
     this->position.setY(pY);
     this->cellType = newCellType;
     this->content = newContent;
+}
+
+Cell Cell::operator=(const Cell& otherCell) {
+    this->position = otherCell.position;
+    this->cellType = otherCell.cellType;
+    this->content = otherCell.content;
+    this->idxEngimonInCell = otherCell.idxEngimonInCell;
+    return *this;
 }
 
 Position Cell::getPosition()
