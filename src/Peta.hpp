@@ -29,17 +29,33 @@ private:
 public:
     Peta();
 
+    // getter
+    int getSizeX();
+    int getSizeY();
+
+    // setter
+    void Peta::setCell(int pX, int pY, Cell c);
+
     void generatePeta();
     void showPeta();
     void showLegend();
     void spawnMonster(vector<int> arrOfEngimonGlobal);
     void showPetaNLegend();
+    
 };
 
 Peta::Peta()
 {
     // arrOfCell = new vector<vector<Cell>>();
     generatePeta();
+}
+
+int Peta::getSizeX() {
+    return this->sizeX;
+}
+
+int Peta::getSizeY() {
+    return this->sizeY;
 }
 
 void Peta::generatePeta()
@@ -135,6 +151,10 @@ void Peta::spawnMonster(vector<int> arrOfEngimonGlobal) // ganti int dengan Engi
     arrOfEngimon.push_back(arrOfEngimonGlobal[i]);
     arrOfCell[x][y].setIdxEngimonInCell(idx);
     // random engimon yang dimasukkan ke cell
+}
+
+void Peta::setCell(int pX, int pY, Cell c) {
+    this->arrOfCell[pX][pY] = c;
 }
 
 #endif

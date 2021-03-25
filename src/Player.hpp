@@ -4,7 +4,7 @@
 #include "Position.hpp"
 #include "Inventory.hpp"
 #include "Peta.hpp"
-#include "folderEngimon/Engimon.hpp"
+// #include "folderEngimon/Engimon.hpp"
 #include "Breed.hpp"
 //#include "Item.hpp"
 
@@ -22,7 +22,8 @@ class Player
         string name;
         Position position;
         Position activeEngimonPosition;
-        Inventory<Engimon> inventoryEngimon;
+        Peta *peta = new Peta();
+        // Inventory<Engimon> inventoryEngimon;
         //Inventory<Item> inventoryItem;
         int activeEngimonIdx;
         int max_capacity;
@@ -35,6 +36,7 @@ class Player
         //getter
         Engimon& get_active_engimon();
         Position get_active_engimon_pos();
+        Peta getPeta();
         
         //setter
         void set_active_engimon(int engimonIdx);
@@ -64,12 +66,19 @@ class Player
 Player::Player() : position(default_player_posX,default_player_posY), activeEngimonIdx(-1), max_capacity(default_max_inven_cap) 
 //Untuk sekarang -1 artinya tidak ada Engimon
 {
-
+    // --------------initialize player di peta--------------------------//
+    // 
+    Cell *c = new Cell(0,0, CellType::grassland, Content::player);
+    peta->setCell(c->getPosition().getX(), c->getPosition().getY(), *c);
+    this->position.setX(0);
+    this->position.setY(0);
+    peta->showPeta();
+    //-------------------------------------------------------------------//
 } 
 
 Player::~Player()
 {
-    //implementasi delete
+    delete this->peta;
 }
 
 Engimon& Player::get_active_engimon()
@@ -80,6 +89,10 @@ Engimon& Player::get_active_engimon()
     }
     
     return this->inventoryEngimon.getInventoryByIndex(this->activeEngimonIdx);
+}
+
+Peta Player::getPeta() {
+    return *this->peta;
 }
 
 Position Player::activeEngimonPos()
@@ -139,16 +152,43 @@ void Player::showInventory()
     */
 }
 
-void Player::moveX(int direction)
+void Player::moveX(int dir)
 {
-    this->position.setX(this->position.getX() + direction);
+    if (this->position.getY()+dir < 0 || this->position.getY()+dir >= this->peta->getSizeY())
+    {
+        cout << "Out of map. Please try different direction !" << endl;
+    } else {
+    
+    // mengembalikan cell sebelumnya menjadi default
+    Cell *c = new Cell(this->position.getX(), this->position.getY(), grassland, air);
+    peta->setCell(c->getPosition().getX(), c->getPosition().getY(), *c);
+
+    // mengubah cell tujuan
+    this->position.setY(this->position.getY() + dir);
+    Cell *d = new Cell(this->position.getX(), this->position.getY(), grassland, player);
+    peta->setCell(d->getPosition().getX(), d->getPosition().getY(), *d);
+    }
     //belum implementasiin batas di peta
 }
 
-void Player::moveY(int direction)
+void Player::moveY(int dir)
 {
     //Untuk sementara begini
-    this->position.setY(this->position.getY() + direction);
+
+    if (this->position.getX()+dir < 0 || this->position.getX()+dir >= this->peta->getSizeX())
+    {
+        cout << "Out of map. Please try different direction !" << endl;
+    } else {
+
+    // mengembalikan cell sebelumnya menjadi default
+    Cell *c = new Cell(this->position.getX(), this->position.getY(), grassland, air);
+    peta->setCell(c->getPosition().getX(), c->getPosition().getY(), *c);
+
+    // mengubah cell tujuan
+    this->position.setX(this->position.getX() + dir);
+    Cell *d = new Cell(this->position.getX(), this->position.getY(), grassland, player);
+    peta->setCell(d->getPosition().getX(), d->getPosition().getY(), *d);
+    }
     //belum implementasiin batas di peta
 }
 
