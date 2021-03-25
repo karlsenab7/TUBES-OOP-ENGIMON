@@ -1,0 +1,10 @@
+A01,Burn Up,Fire,130,Basic Fire Skill,true,Dragon
+A02,Mystical Fire,Fire Ground,750,Advance Fire Skill,false,none
+B01,Aqua Jet,Water Electric,40,Wuussh... Rocket,false,none
+B02,Bubble,Water,65,Blub.. Blub..,true,Berang
+C01,10.000.000 Volt Thunderbolt,Electric,195,Bzzzzzzz,true,Pika
+C02,Charge Beam,Electric Ground,90,Pew pew pew,false,none
+D01,Blizzard,Water Ice,110,Brrrrrr,false,none
+D02,Glacial Lance,Ice Ground,130,Coool...,true,beruang kutub
+E01,Dig,Ground,80,Masuk ke tanah,true,semut
+E02,Earthquake,Ground Electric,70,Gempa Bumi,false,none

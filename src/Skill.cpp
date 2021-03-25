@@ -1,14 +1,48 @@
 #include "Skill.hpp"
-
-Skill::Skill(string ID, string name, vector<Element> element, int power, string desc, bool isUnique, string uniqueTo){
+Skill::Skill(string ID, string name, vector<Element> element, int power, string desc, bool isUnique = false, string uniqueTo = ""){
     this->ID  = ID;
     this->name = name;
     for(int i = 0; i < element.size(); i++){
         this->element.push_back(element[i]);
     }
+    this->power = power;
     this->description = desc;
     this->isUnique = isUnique;
     this->uniqueTo = uniqueTo;
+    this->mastery = 1;
+}
+Skill::Skill(){
+    int idx;
+    do{
+        idx = rand() % getSize();
+    }while(getIsUniqueList(idx));
+    this->ID  = getIDList(idx);
+    this->name = getNameList(idx);
+    for(int i = 0; i < getElementList(idx).size(); i++){
+        this->element.push_back(getElementListMember(idx,i));
+    }
+    this->power = getPowerList(idx);
+    this->description = getDescriptionList(idx);
+    this->isUnique = getIsUniqueList(idx);
+    this->uniqueTo = getUniqueToList(idx);
+    this->mastery = 1;
+}
+Skill::Skill(string species){
+    int idx;
+    for(idx = 0; idx < getSize(); idx++){
+        if(strcmp(species.c_str(), getUniqueToList(idx).c_str()) == 0){
+            break;
+        }
+    }
+    this->ID  = getIDList(idx);
+    this->name = getNameList(idx);
+    for(int i = 0; i < getElementList(idx).size(); i++){
+        this->element.push_back(getElementListMember(idx,i));
+    }
+    this->power = getPowerList(idx);
+    this->description = getDescriptionList(idx);
+    this->isUnique = getIsUniqueList(idx);
+    this->uniqueTo = getUniqueToList(idx);
     this->mastery = 1;
 }
 Skill::Skill(const Skill& s){
