@@ -8,10 +8,9 @@ int main(int argc, char const *argv[])
 
     Player *player = new Player(); 
 
-    Cell *c = new Cell(0,0, CellType::grassland, Content::player);
-    p->setCell(0, 0, *c);
-
-    p->showPeta();
+    player->moveLEFT();
+    player->getPeta().showPeta();
     p->showLegend();
     return 0;
 }
+ 
