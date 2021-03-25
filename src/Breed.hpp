@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include "folderEngimon/Engimon.hpp"
+#include "Engimon.hpp"
 //#include "Database.hpp"
 #include "Element.hpp"
 using namespace std;
@@ -101,8 +101,8 @@ void Breed::giveName(string name)
 
 vector<Skill> Breed::inheritSkill()
 {
-    vector<Skill> s1 = this->first.get_engimon_skill();
-    vector<Skill> s2 = second.get_engimon_skill();
+    vector<Skill> s1 = this->first.get_engimon_skills();
+    vector<Skill> s2 = second.get_engimon_skills();
     vector<Skill> s;
     for (int i = 0; i < s1.size()+s2.size(); i++)
     {
