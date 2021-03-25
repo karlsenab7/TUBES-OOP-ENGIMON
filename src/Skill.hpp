@@ -31,6 +31,7 @@ class Skill {
         string getElement();
         int getPower();
         int getMastery();
+        void setMastery(int);
         string getDescription();
         // Lain-Lain
         void masteryUp();

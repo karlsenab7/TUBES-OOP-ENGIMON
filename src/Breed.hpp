@@ -91,18 +91,18 @@ void Breed::set_second(Engimon e)
 
 bool Breed::isValid()
 {
-    return this->first.getLevel() >= 30 && this->second.getLevel() >= 30;
+    return this->first.get_level() >= 30 && this->second.get_level() >= 30;
 }
 
 void Breed::giveName(string name)
 {
-    child.setName(name);
+    child.set_engimon_name(name);
 }
 
 vector<Skill> Breed::inheritSkill()
 {
-    vector<Skill> s1 = first.getSkill();
-    vector<Skill> s2 = second.getSkill();
+    vector<Skill> s1 = this->first.get_engimon_skill();
+    vector<Skill> s2 = second.get_engimon_skill();
     vector<Skill> s;
     for (int i = 0; i < s1.size()+s2.size(); i++)
     {
@@ -128,13 +128,13 @@ vector<Skill> Breed::inheritSkill()
 
         if (idx1 != -1 && idx2 != -1 && idx != -1)
         {
-            if (s1[idx1].get_skill_mastery() == s2[idx2].get_skill_mastery())
+            if (s1[idx1].getMastery() == s2[idx2].getMastery())
             {
-                c.set_skill_mastery(c.get_skill_mastery()+1);
+                c.setMastery(c.getMastery()+1);
             }
             else
             {
-                if (s1[idx1].get_skill_mastery() > s1[idx2].get_skill_mastery())
+                if (s1[idx1].getMastery() > s1[idx2].getMastery())
                 {
                     c = s1[idx1];
                 }
@@ -165,15 +165,12 @@ vector<Skill> Breed::inheritSkill()
 
 vector<Element> Breed::inheritElement(string& species)
 {
-    int numOfElement1 = first.getNumOfElement();
-    int numOfElement2 = second.getNumOfElement();
-
-    vector<Element> els1 = first.getElement();
-    vector<Element> els2 = second.getElement();
+    vector<Element> els1 = first.get_engimon_elements();
+    vector<Element> els2 = second.get_engimon_elements();
 
     vector<Element> inherit;
 
-    if (numOfElement2 + numOfElement1 == 2)
+    if (els1.size() + els2.size() == 2)
     {
         Element el1 = els1[0];
         Element el2 = els2[0];
@@ -239,7 +236,9 @@ Engimon Breed::breed(string name)
     for (int i = 0; i < childSkill.size(); i++)
         e.add_skill(childSkill[i]);
     
-    e.setName(name);
+    e.set_engimon_name(name);
+
+    // MENGURANGI LEVEL INDUK
 
     return e;
 }
@@ -263,7 +262,7 @@ void Breed::sortSkill(vector<Skill>& s)
         int idxMin = i;
         for (int j = i+1; j < s.size(); j++)
         {
-            if (s[idxMin].get_skill_mastery() > s[j].get_skill_mastery())
+            if (s[idxMin].getMastery() > s[j].getMastery())
             {
                 idxMin = j;
             }

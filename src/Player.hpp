@@ -193,7 +193,7 @@ void Player::get_breeding()
     string name;
     cout << "Give name for child : ";
     cin >> name;
-
+    
     Breed breed(e1, e2, name);
 
     cout << "Breeding selesai!!" << endl;

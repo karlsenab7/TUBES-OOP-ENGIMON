@@ -36,6 +36,15 @@ class Engimon : public EngimonBase {
             //engimon_skills = other.engimon_skills;
         }
 
+        Engimon& operator=(const Engimon& other)
+        {
+            Engimon e(other);
+
+            return e;
+        }
+
+        vector<Skill> get_engimon_skill();
+
         //Destructor
         //~Engimon() : {
             //delete[] engimon_parents;
@@ -66,6 +75,7 @@ class Engimon : public EngimonBase {
             cout << endl;
             
         }
+        void add_skill(Skill);
         //void add_skill(Skill skill) {
             //if (engimon_skills.size < 4)
             //{
@@ -90,7 +100,7 @@ class Engimon : public EngimonBase {
         //}
         int get_total_skill_power()
         {
-            
+            return 0;
         }
 
 };
