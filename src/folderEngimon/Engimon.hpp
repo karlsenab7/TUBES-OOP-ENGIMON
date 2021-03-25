@@ -88,6 +88,10 @@ class Engimon : public EngimonBase {
 
             //throw "No such skill";
         //}
+        int get_total_skill_power()
+        {
+            
+        }
 
 };
 
