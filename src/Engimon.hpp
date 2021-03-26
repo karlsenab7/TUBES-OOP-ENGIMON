@@ -162,6 +162,18 @@ class Engimon : public EngimonBase {
             }
         }
 
+        int get_total_skill_power()
+        {
+            int sum = 0;
+            for (int i = 0; i < engimon_skills.size(); i++)
+            {
+                sum += engimon_skills[i].getMastery() * engimon_skills[i].getPower();
+            }
+
+            return sum;
+            
+        }
+
         // Untuk testing dan contoh penggunaan; comment atau hapus saat header akan digunakan
         // Note: elemen di skill masih berupa string, belum class element
         // Note: belum ada batasan skill yang bisa dipelajari

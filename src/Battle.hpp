@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "Engimon.hpp"
-#include "EngimonBase.hpp"
+// #include "EngimonBase.hpp"
 #include "Element.hpp"
 #include "Skill.hpp"
 #include "Inventory.hpp"
@@ -17,11 +17,11 @@ private:
     Engimon first;
     Engimon second;
     Inventory<Engimon> inventoryEngimon;
-    //Inventory<Item> inventoryItem;
+    Inventory<Skill> inventorySkill;
 
 
 public:
-    Battle(Engimon, Engimon, Inventory<Engimon>&, );
+    Battle(Engimon, Engimon, Inventory<Engimon>&, Inventory<Skill>&);
     ~Battle();
 
     // getter
@@ -42,11 +42,12 @@ public:
     void get_penalty();
 };
 
-Battle::Battle(Engimon e1, Engimon e2, Inventory<Engimon> &inventoryEngimon)
+Battle::Battle(Engimon e1, Engimon e2, Inventory<Engimon> &inventoryEngimon, Inventory<Skill> &inventorySKill)
 {
     this->first = e1;
     this->second = e2;
     this->inventoryEngimon = inventoryEngimon;
+    this->inventorySkill = inventorySkill;
 }
 
 Battle::~Battle()
@@ -129,7 +130,7 @@ void Battle::lose()
 
 void Battle::get_reward()
 {
-
+    Skill e;
 }
 
 void Battle::get_penalty()
