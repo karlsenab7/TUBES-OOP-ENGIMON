@@ -70,7 +70,7 @@ class Player
         void showPeta();
         void showEngimonInventory();
         void showSkillInventory();
-        
+        void inventoryMode();
 };
 
 Player::Player() : position(default_player_posX,default_player_posY), activeEngimonIdx(-1)
@@ -82,6 +82,10 @@ Player::Player() : position(default_player_posX,default_player_posY), activeEngi
     peta->setCell(c->getPosition().getX(), c->getPosition().getY(), *c);
     this->position.setX(0);
     this->position.setY(0);
+
+    Engimon e;
+    e.set_engimon_name("Starter Pack Engimon");
+    addEngimon(e);
     // peta->showPeta();
     //-------------------------------------------------------------------//
 } 
@@ -281,8 +285,34 @@ void Player::moveLEFT()
 // }
 
 
+void Player::inventoryMode()
+{
+    cout << "Open inventory\n\n";
+    char cmd;
+    char mode = '1';
+    do
+    {
+        if (mode == '1')
+        {
+            showEngimonInventory();
+        }
+        else if (mode == '2')
+        {
+            showSkillInventory();
+        }
+
+        cout << "\n<<< " ;
+        cin >> cmd;
+        mode = cmd;
+
+    } while (mode != '3');
+    cout << "Close Inventory\n";
+}
+
+
 void Player::showEngimonInventory()
 {
+    cout << "Engimon Inventory\n";
     cout << "-----------------------------------\n";
     if (inventoryEngimon.getTotalItem() == 0)
     {
@@ -294,7 +324,14 @@ void Player::showEngimonInventory()
         vector<Engimon> el = inventoryEngimon.getInventory();
         for (int i = 0; i < countEl.size(); i++)
         {
-            cout << i + 1 << ".  ";
+            string batas;
+            
+            if (activeEngimonIdx == i)
+                batas = ".* ";
+            else
+                batas = ".  ";
+            
+            cout << i + 1 << batas;
             cout << countEl[i] << "x ";
             cout << el[i].get_engimon_name() << " - Level " << el[i].get_level() << endl;
         }
@@ -306,6 +343,7 @@ void Player::showEngimonInventory()
 
 void Player::showSkillInventory()
 {
+    cout << "Skill Item Inventory\n";
     cout << "-----------------------------------\n";
     if (inventorySkill.getTotalItem() == 0)
     {

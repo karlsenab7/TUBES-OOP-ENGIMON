@@ -96,7 +96,7 @@ void GameManagement::executeCommand(string cmd)
     }
     else if (cmd == "i")
     {
-        p->showEngimonInventory();
+        p->inventoryMode();
     }
     else if (cmd == "use")
     {
