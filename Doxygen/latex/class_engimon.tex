@@ -1,0 +1,154 @@
+\hypertarget{class_engimon}{}\doxysection{Engimon Class Reference}
+\label{class_engimon}\index{Engimon@{Engimon}}
+
+
+{\ttfamily \#include $<$Engimon.\+hpp$>$}
+
+Inheritance diagram for Engimon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_engimon}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_engimon_a7d35af6521af538788768fcfe28f0f55}{Engimon}} ()
+\item 
+\mbox{\hyperlink{class_engimon_ababe3822d2e0be3dba1c5d7c68146994}{Engimon}} (string name, string $\ast$parents\+\_\+names, vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$ elements, int \+\_\+level, int \+\_\+exp, int \+\_\+cum\+\_\+exp, string species, string $\ast$p\+\_\+species, vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ skills)
+\item 
+\mbox{\hyperlink{class_engimon_a1de8628a77f600ed4faab6acad6d681c}{Engimon}} (const \mbox{\hyperlink{class_engimon}{Engimon}} \&other)
+\item 
+\mbox{\hyperlink{class_engimon}{Engimon}} \& \mbox{\hyperlink{class_engimon_a79f8030e3e4e6e5ecf7698c6074a71f9}{operator=}} (const \mbox{\hyperlink{class_engimon}{Engimon}} \&other)
+\item 
+string \mbox{\hyperlink{class_engimon_aab2443b36b18ec4b9dfd7dcca8a4eb6c}{get\+\_\+species\+\_\+name}} ()
+\item 
+string $\ast$ \mbox{\hyperlink{class_engimon_aeb0c9711c9aaccb8bb796feec14a44d0}{get\+\_\+parents\+\_\+species}} ()
+\item 
+vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ \mbox{\hyperlink{class_engimon_ad0dcd892daaaec2de56bc97a7d4c6b74}{get\+\_\+engimon\+\_\+skills}} ()
+\item 
+void \mbox{\hyperlink{class_engimon_a4d6cda865ea967cfcd1950cd7c37c880}{set\+\_\+species\+\_\+name}} (string species)
+\item 
+void \mbox{\hyperlink{class_engimon_ac38935ababdce81e807b4f9533c10716}{set\+\_\+parents\+\_\+species}} (string $\ast$parents)
+\item 
+void \mbox{\hyperlink{class_engimon_ade2a0b243ffed2a1a4b5ccf7f2c236e9}{set\+\_\+engimon\+\_\+skills}} (vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ skills)
+\item 
+void \mbox{\hyperlink{class_engimon_a500ccff93729fa8f60903c7af974a01b}{print\+\_\+details}} ()
+\item 
+bool \mbox{\hyperlink{class_engimon_a5854542cb55848f116b1464c5ceb3b02}{is\+\_\+skill\+\_\+already\+\_\+learned}} (\mbox{\hyperlink{class_skill}{Skill}} skill)
+\item 
+void \mbox{\hyperlink{class_engimon_a97ac9706f50a19db0380551044152db5}{add\+\_\+skill}} (\mbox{\hyperlink{class_skill}{Skill}} skill)
+\item 
+void \mbox{\hyperlink{class_engimon_a83503af40b17970d8c22e45638bd0c20}{change\+\_\+skill}} (\mbox{\hyperlink{class_skill}{Skill}} skill, \mbox{\hyperlink{class_skill}{Skill}} replaced)
+\item 
+void \mbox{\hyperlink{class_engimon_a33c3cf12b37d179082851b606c089729}{change\+\_\+skill\+\_\+alt}} (\mbox{\hyperlink{class_skill}{Skill}} skill, int idx)
+\item 
+int \mbox{\hyperlink{class_engimon_abec52b100a3cc10a8cbc675e0c1a792c}{get\+\_\+total\+\_\+skill\+\_\+power}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_engimon_a7d35af6521af538788768fcfe28f0f55}\label{class_engimon_a7d35af6521af538788768fcfe28f0f55}} 
+\index{Engimon@{Engimon}!Engimon@{Engimon}}
+\index{Engimon@{Engimon}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{Engimon()}{Engimon()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Engimon\+::\+Engimon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_ababe3822d2e0be3dba1c5d7c68146994}\label{class_engimon_ababe3822d2e0be3dba1c5d7c68146994}} 
+\index{Engimon@{Engimon}!Engimon@{Engimon}}
+\index{Engimon@{Engimon}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{Engimon()}{Engimon()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Engimon\+::\+Engimon (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{string $\ast$}]{parents\+\_\+names,  }\item[{vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$}]{elements,  }\item[{int}]{\+\_\+level,  }\item[{int}]{\+\_\+exp,  }\item[{int}]{\+\_\+cum\+\_\+exp,  }\item[{string}]{species,  }\item[{string $\ast$}]{p\+\_\+species,  }\item[{vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$}]{skills }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_a1de8628a77f600ed4faab6acad6d681c}\label{class_engimon_a1de8628a77f600ed4faab6acad6d681c}} 
+\index{Engimon@{Engimon}!Engimon@{Engimon}}
+\index{Engimon@{Engimon}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{Engimon()}{Engimon()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Engimon\+::\+Engimon (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_engimon}{Engimon}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engimon_a97ac9706f50a19db0380551044152db5}\label{class_engimon_a97ac9706f50a19db0380551044152db5}} 
+\index{Engimon@{Engimon}!add\_skill@{add\_skill}}
+\index{add\_skill@{add\_skill}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{add\_skill()}{add\_skill()}}
+{\footnotesize\ttfamily void Engimon\+::add\+\_\+skill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_skill}{Skill}}}]{skill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_a83503af40b17970d8c22e45638bd0c20}\label{class_engimon_a83503af40b17970d8c22e45638bd0c20}} 
+\index{Engimon@{Engimon}!change\_skill@{change\_skill}}
+\index{change\_skill@{change\_skill}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{change\_skill()}{change\_skill()}}
+{\footnotesize\ttfamily void Engimon\+::change\+\_\+skill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_skill}{Skill}}}]{skill,  }\item[{\mbox{\hyperlink{class_skill}{Skill}}}]{replaced }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_a33c3cf12b37d179082851b606c089729}\label{class_engimon_a33c3cf12b37d179082851b606c089729}} 
+\index{Engimon@{Engimon}!change\_skill\_alt@{change\_skill\_alt}}
+\index{change\_skill\_alt@{change\_skill\_alt}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{change\_skill\_alt()}{change\_skill\_alt()}}
+{\footnotesize\ttfamily void Engimon\+::change\+\_\+skill\+\_\+alt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_skill}{Skill}}}]{skill,  }\item[{int}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_ad0dcd892daaaec2de56bc97a7d4c6b74}\label{class_engimon_ad0dcd892daaaec2de56bc97a7d4c6b74}} 
+\index{Engimon@{Engimon}!get\_engimon\_skills@{get\_engimon\_skills}}
+\index{get\_engimon\_skills@{get\_engimon\_skills}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{get\_engimon\_skills()}{get\_engimon\_skills()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_skill}{Skill}}$>$ Engimon\+::get\+\_\+engimon\+\_\+skills (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_aeb0c9711c9aaccb8bb796feec14a44d0}\label{class_engimon_aeb0c9711c9aaccb8bb796feec14a44d0}} 
+\index{Engimon@{Engimon}!get\_parents\_species@{get\_parents\_species}}
+\index{get\_parents\_species@{get\_parents\_species}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{get\_parents\_species()}{get\_parents\_species()}}
+{\footnotesize\ttfamily string$\ast$ Engimon\+::get\+\_\+parents\+\_\+species (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_aab2443b36b18ec4b9dfd7dcca8a4eb6c}\label{class_engimon_aab2443b36b18ec4b9dfd7dcca8a4eb6c}} 
+\index{Engimon@{Engimon}!get\_species\_name@{get\_species\_name}}
+\index{get\_species\_name@{get\_species\_name}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{get\_species\_name()}{get\_species\_name()}}
+{\footnotesize\ttfamily string Engimon\+::get\+\_\+species\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_abec52b100a3cc10a8cbc675e0c1a792c}\label{class_engimon_abec52b100a3cc10a8cbc675e0c1a792c}} 
+\index{Engimon@{Engimon}!get\_total\_skill\_power@{get\_total\_skill\_power}}
+\index{get\_total\_skill\_power@{get\_total\_skill\_power}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{get\_total\_skill\_power()}{get\_total\_skill\_power()}}
+{\footnotesize\ttfamily int Engimon\+::get\+\_\+total\+\_\+skill\+\_\+power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_a5854542cb55848f116b1464c5ceb3b02}\label{class_engimon_a5854542cb55848f116b1464c5ceb3b02}} 
+\index{Engimon@{Engimon}!is\_skill\_already\_learned@{is\_skill\_already\_learned}}
+\index{is\_skill\_already\_learned@{is\_skill\_already\_learned}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{is\_skill\_already\_learned()}{is\_skill\_already\_learned()}}
+{\footnotesize\ttfamily bool Engimon\+::is\+\_\+skill\+\_\+already\+\_\+learned (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_skill}{Skill}}}]{skill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_a79f8030e3e4e6e5ecf7698c6074a71f9}\label{class_engimon_a79f8030e3e4e6e5ecf7698c6074a71f9}} 
+\index{Engimon@{Engimon}!operator=@{operator=}}
+\index{operator=@{operator=}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engimon}{Engimon}}\& Engimon\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_engimon}{Engimon}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_a500ccff93729fa8f60903c7af974a01b}\label{class_engimon_a500ccff93729fa8f60903c7af974a01b}} 
+\index{Engimon@{Engimon}!print\_details@{print\_details}}
+\index{print\_details@{print\_details}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{print\_details()}{print\_details()}}
+{\footnotesize\ttfamily void Engimon\+::print\+\_\+details (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_ade2a0b243ffed2a1a4b5ccf7f2c236e9}\label{class_engimon_ade2a0b243ffed2a1a4b5ccf7f2c236e9}} 
+\index{Engimon@{Engimon}!set\_engimon\_skills@{set\_engimon\_skills}}
+\index{set\_engimon\_skills@{set\_engimon\_skills}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{set\_engimon\_skills()}{set\_engimon\_skills()}}
+{\footnotesize\ttfamily void Engimon\+::set\+\_\+engimon\+\_\+skills (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$}]{skills }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_ac38935ababdce81e807b4f9533c10716}\label{class_engimon_ac38935ababdce81e807b4f9533c10716}} 
+\index{Engimon@{Engimon}!set\_parents\_species@{set\_parents\_species}}
+\index{set\_parents\_species@{set\_parents\_species}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{set\_parents\_species()}{set\_parents\_species()}}
+{\footnotesize\ttfamily void Engimon\+::set\+\_\+parents\+\_\+species (\begin{DoxyParamCaption}\item[{string $\ast$}]{parents }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engimon_a4d6cda865ea967cfcd1950cd7c37c880}\label{class_engimon_a4d6cda865ea967cfcd1950cd7c37c880}} 
+\index{Engimon@{Engimon}!set\_species\_name@{set\_species\_name}}
+\index{set\_species\_name@{set\_species\_name}!Engimon@{Engimon}}
+\doxysubsubsection{\texorpdfstring{set\_species\_name()}{set\_species\_name()}}
+{\footnotesize\ttfamily void Engimon\+::set\+\_\+species\+\_\+name (\begin{DoxyParamCaption}\item[{string}]{species }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_engimon_8hpp}{Engimon.\+hpp}}\end{DoxyCompactItemize}

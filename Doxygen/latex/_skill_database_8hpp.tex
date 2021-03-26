@@ -1,0 +1,172 @@
+\hypertarget{_skill_database_8hpp}{}\doxysection{Skill\+Database.\+hpp File Reference}
+\label{_skill_database_8hpp}\index{SkillDatabase.hpp@{SkillDatabase.hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include \char`\"{}Element.\+hpp\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_skill_database_8hpp_a176a3728fae6ecb86819b04eca98b6c1}{check\+Skill\+Database}} ()
+\item 
+void \mbox{\hyperlink{_skill_database_8hpp_aa21dfcd89dd7b37aea235b1ace41be07}{init\+Skill\+Database}} ()
+\item 
+string \mbox{\hyperlink{_skill_database_8hpp_a66f9babd70cf3d169aa92e64acff3261}{get\+IDList}} (int idx)
+\item 
+string \mbox{\hyperlink{_skill_database_8hpp_a94cc4c4606f63446dc544d12858600a1}{get\+Name\+List}} (int idx)
+\item 
+vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$ \mbox{\hyperlink{_skill_database_8hpp_aa0ddf9f81f7a922fd91d2504884d3306}{get\+Element\+List}} (int idx)
+\item 
+\mbox{\hyperlink{class_element}{Element}} \mbox{\hyperlink{_skill_database_8hpp_a2abecb1f2754f222f2a464a1b86cd9a9}{get\+Element\+List\+Member}} (int idx, int n)
+\item 
+int \mbox{\hyperlink{_skill_database_8hpp_a998fa6c8c6952bbf195139f292380f4d}{get\+Power\+List}} (int idx)
+\item 
+string \mbox{\hyperlink{_skill_database_8hpp_a6cd1be9401ec307596014620a0ac43a3}{get\+Description\+List}} (int idx)
+\item 
+bool \mbox{\hyperlink{_skill_database_8hpp_af3dedb7fdfd0a31404f4588f4c6c77aa}{get\+Is\+Unique\+List}} (int idx)
+\item 
+string \mbox{\hyperlink{_skill_database_8hpp_abcf9559f65f5b23fc27134dd6c2b4717}{get\+Unique\+To\+List}} (int idx)
+\item 
+int \mbox{\hyperlink{_skill_database_8hpp_a3c4029b904a61a9873e6d12785ce19a1}{get\+Size}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ string $>$ \mbox{\hyperlink{_skill_database_8hpp_ab30ea4cd150b03d6b2870bde5bd71102}{IDList}}
+\item 
+vector$<$ string $>$ \mbox{\hyperlink{_skill_database_8hpp_afafe1298dd8f2a40176a8e2f2eb64648}{name\+List}}
+\item 
+vector$<$ vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$ $>$ \mbox{\hyperlink{_skill_database_8hpp_a7404eaa2bb450610775ed80e162114f3}{element\+List}}
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{_skill_database_8hpp_a737caaeaca1a37aea5fa66a66266cda2}{power\+List}}
+\item 
+vector$<$ string $>$ \mbox{\hyperlink{_skill_database_8hpp_abe8945ab10e574860e1aa3129c039329}{description\+List}}
+\item 
+vector$<$ bool $>$ \mbox{\hyperlink{_skill_database_8hpp_a57a1ad2a6e7763ac0c05242db2ff45c8}{is\+Unique\+List}}
+\item 
+vector$<$ string $>$ \mbox{\hyperlink{_skill_database_8hpp_aa203145d4ea9c609acd202f80a2527dc}{unique\+To\+List}}
+\item 
+int \mbox{\hyperlink{_skill_database_8hpp_a113748798b190f6e24841a6e3a35d699}{num\+Of\+Data}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_skill_database_8hpp_a176a3728fae6ecb86819b04eca98b6c1}\label{_skill_database_8hpp_a176a3728fae6ecb86819b04eca98b6c1}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!checkSkillDatabase@{checkSkillDatabase}}
+\index{checkSkillDatabase@{checkSkillDatabase}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{checkSkillDatabase()}{checkSkillDatabase()}}
+{\footnotesize\ttfamily void check\+Skill\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_skill_database_8hpp_a6cd1be9401ec307596014620a0ac43a3}\label{_skill_database_8hpp_a6cd1be9401ec307596014620a0ac43a3}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!getDescriptionList@{getDescriptionList}}
+\index{getDescriptionList@{getDescriptionList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{getDescriptionList()}{getDescriptionList()}}
+{\footnotesize\ttfamily string get\+Description\+List (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_skill_database_8hpp_aa0ddf9f81f7a922fd91d2504884d3306}\label{_skill_database_8hpp_aa0ddf9f81f7a922fd91d2504884d3306}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!getElementList@{getElementList}}
+\index{getElementList@{getElementList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{getElementList()}{getElementList()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_element}{Element}}$>$ get\+Element\+List (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_skill_database_8hpp_a2abecb1f2754f222f2a464a1b86cd9a9}\label{_skill_database_8hpp_a2abecb1f2754f222f2a464a1b86cd9a9}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!getElementListMember@{getElementListMember}}
+\index{getElementListMember@{getElementListMember}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{getElementListMember()}{getElementListMember()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_element}{Element}} get\+Element\+List\+Member (\begin{DoxyParamCaption}\item[{int}]{idx,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_skill_database_8hpp_a66f9babd70cf3d169aa92e64acff3261}\label{_skill_database_8hpp_a66f9babd70cf3d169aa92e64acff3261}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!getIDList@{getIDList}}
+\index{getIDList@{getIDList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{getIDList()}{getIDList()}}
+{\footnotesize\ttfamily string get\+IDList (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_skill_database_8hpp_af3dedb7fdfd0a31404f4588f4c6c77aa}\label{_skill_database_8hpp_af3dedb7fdfd0a31404f4588f4c6c77aa}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!getIsUniqueList@{getIsUniqueList}}
+\index{getIsUniqueList@{getIsUniqueList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{getIsUniqueList()}{getIsUniqueList()}}
+{\footnotesize\ttfamily bool get\+Is\+Unique\+List (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_skill_database_8hpp_a94cc4c4606f63446dc544d12858600a1}\label{_skill_database_8hpp_a94cc4c4606f63446dc544d12858600a1}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!getNameList@{getNameList}}
+\index{getNameList@{getNameList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{getNameList()}{getNameList()}}
+{\footnotesize\ttfamily string get\+Name\+List (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_skill_database_8hpp_a998fa6c8c6952bbf195139f292380f4d}\label{_skill_database_8hpp_a998fa6c8c6952bbf195139f292380f4d}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!getPowerList@{getPowerList}}
+\index{getPowerList@{getPowerList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{getPowerList()}{getPowerList()}}
+{\footnotesize\ttfamily int get\+Power\+List (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_skill_database_8hpp_a3c4029b904a61a9873e6d12785ce19a1}\label{_skill_database_8hpp_a3c4029b904a61a9873e6d12785ce19a1}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!getSize@{getSize}}
+\index{getSize@{getSize}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_skill_database_8hpp_abcf9559f65f5b23fc27134dd6c2b4717}\label{_skill_database_8hpp_abcf9559f65f5b23fc27134dd6c2b4717}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!getUniqueToList@{getUniqueToList}}
+\index{getUniqueToList@{getUniqueToList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{getUniqueToList()}{getUniqueToList()}}
+{\footnotesize\ttfamily string get\+Unique\+To\+List (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_skill_database_8hpp_aa21dfcd89dd7b37aea235b1ace41be07}\label{_skill_database_8hpp_aa21dfcd89dd7b37aea235b1ace41be07}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!initSkillDatabase@{initSkillDatabase}}
+\index{initSkillDatabase@{initSkillDatabase}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{initSkillDatabase()}{initSkillDatabase()}}
+{\footnotesize\ttfamily void init\+Skill\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_skill_database_8hpp_abe8945ab10e574860e1aa3129c039329}\label{_skill_database_8hpp_abe8945ab10e574860e1aa3129c039329}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!descriptionList@{descriptionList}}
+\index{descriptionList@{descriptionList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{descriptionList}{descriptionList}}
+{\footnotesize\ttfamily vector$<$string$>$ description\+List}
+
+\mbox{\Hypertarget{_skill_database_8hpp_a7404eaa2bb450610775ed80e162114f3}\label{_skill_database_8hpp_a7404eaa2bb450610775ed80e162114f3}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!elementList@{elementList}}
+\index{elementList@{elementList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{elementList}{elementList}}
+{\footnotesize\ttfamily vector$<$vector$<$\mbox{\hyperlink{class_element}{Element}}$>$ $>$ element\+List}
+
+\mbox{\Hypertarget{_skill_database_8hpp_ab30ea4cd150b03d6b2870bde5bd71102}\label{_skill_database_8hpp_ab30ea4cd150b03d6b2870bde5bd71102}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!IDList@{IDList}}
+\index{IDList@{IDList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{IDList}{IDList}}
+{\footnotesize\ttfamily vector$<$string$>$ IDList}
+
+\mbox{\Hypertarget{_skill_database_8hpp_a57a1ad2a6e7763ac0c05242db2ff45c8}\label{_skill_database_8hpp_a57a1ad2a6e7763ac0c05242db2ff45c8}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!isUniqueList@{isUniqueList}}
+\index{isUniqueList@{isUniqueList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{isUniqueList}{isUniqueList}}
+{\footnotesize\ttfamily vector$<$bool$>$ is\+Unique\+List}
+
+\mbox{\Hypertarget{_skill_database_8hpp_afafe1298dd8f2a40176a8e2f2eb64648}\label{_skill_database_8hpp_afafe1298dd8f2a40176a8e2f2eb64648}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!nameList@{nameList}}
+\index{nameList@{nameList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{nameList}{nameList}}
+{\footnotesize\ttfamily vector$<$string$>$ name\+List}
+
+\mbox{\Hypertarget{_skill_database_8hpp_a113748798b190f6e24841a6e3a35d699}\label{_skill_database_8hpp_a113748798b190f6e24841a6e3a35d699}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!numOfData@{numOfData}}
+\index{numOfData@{numOfData}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{numOfData}{numOfData}}
+{\footnotesize\ttfamily int num\+Of\+Data}
+
+\mbox{\Hypertarget{_skill_database_8hpp_a737caaeaca1a37aea5fa66a66266cda2}\label{_skill_database_8hpp_a737caaeaca1a37aea5fa66a66266cda2}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!powerList@{powerList}}
+\index{powerList@{powerList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{powerList}{powerList}}
+{\footnotesize\ttfamily vector$<$int$>$ power\+List}
+
+\mbox{\Hypertarget{_skill_database_8hpp_aa203145d4ea9c609acd202f80a2527dc}\label{_skill_database_8hpp_aa203145d4ea9c609acd202f80a2527dc}} 
+\index{SkillDatabase.hpp@{SkillDatabase.hpp}!uniqueToList@{uniqueToList}}
+\index{uniqueToList@{uniqueToList}!SkillDatabase.hpp@{SkillDatabase.hpp}}
+\doxysubsubsection{\texorpdfstring{uniqueToList}{uniqueToList}}
+{\footnotesize\ttfamily vector$<$string$>$ unique\+To\+List}
+

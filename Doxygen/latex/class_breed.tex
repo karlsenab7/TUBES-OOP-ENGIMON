@@ -1,0 +1,172 @@
+\hypertarget{class_breed}{}\doxysection{Breed Class Reference}
+\label{class_breed}\index{Breed@{Breed}}
+
+
+{\ttfamily \#include $<$Breed.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_breed_a8c705dfcf88599c793628afc61d8abed}{Breed}} (\mbox{\hyperlink{class_engimon}{Engimon}} \&, \mbox{\hyperlink{class_engimon}{Engimon}} \&, string)
+\item 
+\mbox{\hyperlink{class_breed_a3a691adfb0ebea034927b72ae6961bcc}{Breed}} (const \mbox{\hyperlink{class_breed}{Breed}} \&)
+\item 
+\mbox{\hyperlink{class_breed_a2395f9ba1f2ff34398bea7fb7a60e902}{$\sim$\+Breed}} ()
+\item 
+bool \mbox{\hyperlink{class_breed_af37e2c1d5e803c89debde60e1d75ae76}{is\+Valid}} ()
+\item 
+\mbox{\hyperlink{class_engimon}{Engimon}} \mbox{\hyperlink{class_breed_a1974ca0cb9d85ee190099348d690d9fe}{get\+\_\+first}} ()
+\item 
+\mbox{\hyperlink{class_engimon}{Engimon}} \mbox{\hyperlink{class_breed_a2d59f409ca6565b05a061746381a5920}{get\+\_\+second}} ()
+\item 
+\mbox{\hyperlink{class_engimon}{Engimon}} \mbox{\hyperlink{class_breed_a56dd6a412ba9bedaf301dcdecb8fe086}{get\+\_\+child}} ()
+\item 
+\mbox{\hyperlink{class_engimon}{Engimon}} \mbox{\hyperlink{class_breed_a71a5c528d17adf4ba2d3df3b9119a22a}{breed}} (string)
+\item 
+void \mbox{\hyperlink{class_breed_a4f51762dd4aa02fcd64267c429e953ed}{set\+\_\+first}} (\mbox{\hyperlink{class_engimon}{Engimon}} \&)
+\item 
+void \mbox{\hyperlink{class_breed_a3699fff2046a3df4a01180764cc34982}{set\+\_\+second}} (\mbox{\hyperlink{class_engimon}{Engimon}} \&)
+\item 
+void \mbox{\hyperlink{class_breed_ae048a7ae2eb30b0d2be3709ce43b913a}{give\+Name}} (string)
+\item 
+\mbox{\hyperlink{class_engimon}{Engimon}} \mbox{\hyperlink{class_breed_a163b6e654cdc1a6df4b8cefb45118582}{get\+New\+Engimon\+From\+Database}} (string, vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$)
+\item 
+vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ \mbox{\hyperlink{class_breed_ae1637ae2894da0b1e0066d89d33c0f50}{inherit\+Skill}} ()
+\item 
+vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$ \mbox{\hyperlink{class_breed_a6fea85ebb030cf0e93113826afc01bf3}{inherit\+Element}} (string \&)
+\item 
+vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$ \mbox{\hyperlink{class_breed_a41842c4cb65a0156573f4c71e885ac29}{get\+Kombinasi\+Element}} (string \&, \mbox{\hyperlink{class_element}{Element}}, \mbox{\hyperlink{class_element}{Element}})
+\item 
+void \mbox{\hyperlink{class_breed_a69d9a027664a923285599f8edb40fa77}{set\+Child\+Skill}} (vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$)
+\item 
+void \mbox{\hyperlink{class_breed_a3d8293c9a4154ec6830ccb64e61efb9a}{set\+Child\+Element}} (vector$<$ string $>$)
+\item 
+void \mbox{\hyperlink{class_breed_a59a717f69545260ff9264ce219ba5eef}{sort\+Skill}} (vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ \&)
+\item 
+int \mbox{\hyperlink{class_breed_ac95e04c2c8693857f5db530fea8f9808}{is\+Exist\+Skill}} (vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$, \mbox{\hyperlink{class_skill}{Skill}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_breed_a8c705dfcf88599c793628afc61d8abed}\label{class_breed_a8c705dfcf88599c793628afc61d8abed}} 
+\index{Breed@{Breed}!Breed@{Breed}}
+\index{Breed@{Breed}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{Breed()}{Breed()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Breed\+::\+Breed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_engimon}{Engimon}} \&}]{e1,  }\item[{\mbox{\hyperlink{class_engimon}{Engimon}} \&}]{e2,  }\item[{string}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a3a691adfb0ebea034927b72ae6961bcc}\label{class_breed_a3a691adfb0ebea034927b72ae6961bcc}} 
+\index{Breed@{Breed}!Breed@{Breed}}
+\index{Breed@{Breed}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{Breed()}{Breed()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Breed\+::\+Breed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_breed}{Breed}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a2395f9ba1f2ff34398bea7fb7a60e902}\label{class_breed_a2395f9ba1f2ff34398bea7fb7a60e902}} 
+\index{Breed@{Breed}!````~Breed@{$\sim$Breed}}
+\index{````~Breed@{$\sim$Breed}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{$\sim$Breed()}{~Breed()}}
+{\footnotesize\ttfamily Breed\+::$\sim$\+Breed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_breed_a71a5c528d17adf4ba2d3df3b9119a22a}\label{class_breed_a71a5c528d17adf4ba2d3df3b9119a22a}} 
+\index{Breed@{Breed}!breed@{breed}}
+\index{breed@{breed}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{breed()}{breed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engimon}{Engimon}} Breed\+::breed (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a56dd6a412ba9bedaf301dcdecb8fe086}\label{class_breed_a56dd6a412ba9bedaf301dcdecb8fe086}} 
+\index{Breed@{Breed}!get\_child@{get\_child}}
+\index{get\_child@{get\_child}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{get\_child()}{get\_child()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engimon}{Engimon}} Breed\+::get\+\_\+child (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a1974ca0cb9d85ee190099348d690d9fe}\label{class_breed_a1974ca0cb9d85ee190099348d690d9fe}} 
+\index{Breed@{Breed}!get\_first@{get\_first}}
+\index{get\_first@{get\_first}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{get\_first()}{get\_first()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engimon}{Engimon}} Breed\+::get\+\_\+first (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a2d59f409ca6565b05a061746381a5920}\label{class_breed_a2d59f409ca6565b05a061746381a5920}} 
+\index{Breed@{Breed}!get\_second@{get\_second}}
+\index{get\_second@{get\_second}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{get\_second()}{get\_second()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engimon}{Engimon}} Breed\+::get\+\_\+second (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a41842c4cb65a0156573f4c71e885ac29}\label{class_breed_a41842c4cb65a0156573f4c71e885ac29}} 
+\index{Breed@{Breed}!getKombinasiElement@{getKombinasiElement}}
+\index{getKombinasiElement@{getKombinasiElement}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{getKombinasiElement()}{getKombinasiElement()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$ Breed\+::get\+Kombinasi\+Element (\begin{DoxyParamCaption}\item[{string \&}]{species,  }\item[{\mbox{\hyperlink{class_element}{Element}}}]{el1,  }\item[{\mbox{\hyperlink{class_element}{Element}}}]{el2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a163b6e654cdc1a6df4b8cefb45118582}\label{class_breed_a163b6e654cdc1a6df4b8cefb45118582}} 
+\index{Breed@{Breed}!getNewEngimonFromDatabase@{getNewEngimonFromDatabase}}
+\index{getNewEngimonFromDatabase@{getNewEngimonFromDatabase}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{getNewEngimonFromDatabase()}{getNewEngimonFromDatabase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engimon}{Engimon}} Breed\+::get\+New\+Engimon\+From\+Database (\begin{DoxyParamCaption}\item[{string}]{,  }\item[{vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_ae048a7ae2eb30b0d2be3709ce43b913a}\label{class_breed_ae048a7ae2eb30b0d2be3709ce43b913a}} 
+\index{Breed@{Breed}!giveName@{giveName}}
+\index{giveName@{giveName}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{giveName()}{giveName()}}
+{\footnotesize\ttfamily void Breed\+::give\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a6fea85ebb030cf0e93113826afc01bf3}\label{class_breed_a6fea85ebb030cf0e93113826afc01bf3}} 
+\index{Breed@{Breed}!inheritElement@{inheritElement}}
+\index{inheritElement@{inheritElement}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{inheritElement()}{inheritElement()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$ Breed\+::inherit\+Element (\begin{DoxyParamCaption}\item[{string \&}]{species }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_ae1637ae2894da0b1e0066d89d33c0f50}\label{class_breed_ae1637ae2894da0b1e0066d89d33c0f50}} 
+\index{Breed@{Breed}!inheritSkill@{inheritSkill}}
+\index{inheritSkill@{inheritSkill}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{inheritSkill()}{inheritSkill()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ Breed\+::inherit\+Skill (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_ac95e04c2c8693857f5db530fea8f9808}\label{class_breed_ac95e04c2c8693857f5db530fea8f9808}} 
+\index{Breed@{Breed}!isExistSkill@{isExistSkill}}
+\index{isExistSkill@{isExistSkill}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{isExistSkill()}{isExistSkill()}}
+{\footnotesize\ttfamily int Breed\+::is\+Exist\+Skill (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$}]{s,  }\item[{\mbox{\hyperlink{class_skill}{Skill}}}]{c }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_af37e2c1d5e803c89debde60e1d75ae76}\label{class_breed_af37e2c1d5e803c89debde60e1d75ae76}} 
+\index{Breed@{Breed}!isValid@{isValid}}
+\index{isValid@{isValid}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{isValid()}{isValid()}}
+{\footnotesize\ttfamily bool Breed\+::is\+Valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a4f51762dd4aa02fcd64267c429e953ed}\label{class_breed_a4f51762dd4aa02fcd64267c429e953ed}} 
+\index{Breed@{Breed}!set\_first@{set\_first}}
+\index{set\_first@{set\_first}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{set\_first()}{set\_first()}}
+{\footnotesize\ttfamily void Breed\+::set\+\_\+first (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_engimon}{Engimon}} \&}]{e }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a3699fff2046a3df4a01180764cc34982}\label{class_breed_a3699fff2046a3df4a01180764cc34982}} 
+\index{Breed@{Breed}!set\_second@{set\_second}}
+\index{set\_second@{set\_second}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{set\_second()}{set\_second()}}
+{\footnotesize\ttfamily void Breed\+::set\+\_\+second (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_engimon}{Engimon}} \&}]{e }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a3d8293c9a4154ec6830ccb64e61efb9a}\label{class_breed_a3d8293c9a4154ec6830ccb64e61efb9a}} 
+\index{Breed@{Breed}!setChildElement@{setChildElement}}
+\index{setChildElement@{setChildElement}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{setChildElement()}{setChildElement()}}
+{\footnotesize\ttfamily void Breed\+::set\+Child\+Element (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a69d9a027664a923285599f8edb40fa77}\label{class_breed_a69d9a027664a923285599f8edb40fa77}} 
+\index{Breed@{Breed}!setChildSkill@{setChildSkill}}
+\index{setChildSkill@{setChildSkill}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{setChildSkill()}{setChildSkill()}}
+{\footnotesize\ttfamily void Breed\+::set\+Child\+Skill (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_breed_a59a717f69545260ff9264ce219ba5eef}\label{class_breed_a59a717f69545260ff9264ce219ba5eef}} 
+\index{Breed@{Breed}!sortSkill@{sortSkill}}
+\index{sortSkill@{sortSkill}!Breed@{Breed}}
+\doxysubsubsection{\texorpdfstring{sortSkill()}{sortSkill()}}
+{\footnotesize\ttfamily void Breed\+::sort\+Skill (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ \&}]{s }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_breed_8hpp}{Breed.\+hpp}}\end{DoxyCompactItemize}
