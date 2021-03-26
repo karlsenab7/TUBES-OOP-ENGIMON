@@ -5,6 +5,8 @@
 #include <iostream>
 #include "../Element.hpp"
 
+#define LEVELCAP = 35;
+
 using namespace std;
 
 class EngimonBase {
@@ -150,6 +152,9 @@ void EngimonBase::add_exp(int add) {
     if (exp > 100) {
         level += 1;
         exp -= 100;
+    }
+    if (level >= LEVELCAP) {
+        throw "level cap reached";
     }
 }
 
