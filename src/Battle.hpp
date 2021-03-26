@@ -25,7 +25,7 @@ public:
     ~Battle();
 
     // getter
-    Engimon get_first();
+    int get_first();
     Engimon get_second();
 
     // setter
@@ -54,7 +54,7 @@ Battle::~Battle()
 {
 }
 
-Engimon Battle:: get_first()
+int Battle:: get_first()
 {
     return idxOwnEngimon;
 }
@@ -105,6 +105,11 @@ void Battle::fight()
 {
     float fp1 = sum_power(inventoryEngimon.getInventory()[idxOwnEngimon], second.get_engimon_elements());
     float fp2 = sum_power(second, inventoryEngimon.getInventory()[idxOwnEngimon].get_engimon_elements());
+    
+    cout << "Your Engimon Power : " << fp1 << endl;
+    cout << "Enemy Power : " << fp2 << endl;
+    
+    
     //Memberi interface ke user
     if (fp1 > fp2)
     {
@@ -119,12 +124,14 @@ void Battle::fight()
 void Battle::win()
 {
     //Menampilkan interface
+    cout << "\nYeay!!! You Win\n" << endl;
     get_reward();
 }
 
 void Battle::lose()
 {
     //Menampilkan interface
+    cout << "\nYou Lose :(\n" << endl;
     get_penalty();
 }
 
@@ -134,10 +141,18 @@ void Battle::get_reward()
     Skill s = skills[0];
     inventorySkill.addInventory(s);
     inventoryEngimon.getInventory()[idxOwnEngimon].add_exp(40);
+    
+
+
+    cout << "REWARD : \n";
+    cout << "Engimon : " << second.get_engimon_name() << " - Level " << second.get_level() << endl;
+    cout << "Skill : " << s.getName() << " - Mastery Level " << s.getMastery() << endl;
+    cout << endl;
 }
 
 void Battle::get_penalty()
 {
     inventoryEngimon.removeInventory(idxOwnEngimon);
+    cout << "Your active engimon is dead!!\n\n";
 }
 #endif

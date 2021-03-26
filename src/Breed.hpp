@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "Engimon.hpp"
-//#include "Database.hpp"
+#include "EngimonDatabase.hpp"
 #include "Element.hpp"
 using namespace std;
 
@@ -237,7 +237,11 @@ Engimon Breed::breed(string name)
     vector<Element> childElement = inheritElement(species);
 
     // PERLU IMPLEMENTASI
-    Engimon e;
+    
+    EngimonDatabase db;
+
+    Engimon e = db.get_engimon_by_element(childElement);
+
     //Engimon e = getNewEngimonFromDatabase(species, childElement);
 
     for (int i = 0; i < childSkill.size(); i++)
@@ -247,6 +251,11 @@ Engimon Breed::breed(string name)
 
     string parents[] = {first.get_engimon_name(), second.get_engimon_name()};
     e.set_engimon_parents_names(parents);
+
+    e.set_species_name(species);
+
+    string speciesParents[] = {first.get_species_name(), second.get_species_name()};
+    e.set_parents_species(speciesParents);
 
     // MENGURANGI LEVEL INDUK
 

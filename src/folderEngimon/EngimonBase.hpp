@@ -48,6 +48,7 @@ class EngimonBase {
         void set_level(int);
         void set_exp(int);
         void set_cum_exp(int);
+        void set_id(int);
 
         //Additional Methods
         void add_exp(int);
@@ -65,7 +66,7 @@ EngimonBase::EngimonBase()
     level = 1;
     exp = 0;
     cum_exp = 0;
-    engimon_id = numOfCreated;
+    engimon_id = 1;
     engimon_elements.assign(1, Element("Fire"));
 
     engimon_parents_names = new string [2];
@@ -82,7 +83,7 @@ EngimonBase::EngimonBase(string name, string * parents, vector<Element> elements
     cum_exp = _cum_exp;
     //engimon_elements = elements;
     engimon_elements.swap(elements);
-    engimon_id = numOfCreated;
+    engimon_id = 1;
 
     engimon_parents_names = new string [2];
     for (int i = 0; i < 2; i++) {engimon_parents_names[i] = parents[i];}
@@ -123,6 +124,10 @@ EngimonBase& EngimonBase::operator=(const EngimonBase& other) {
     for (int i = 0; i < 2; i++) {this->engimon_parents_names[i] = other.engimon_parents_names[i];}
     
     return *this;
+}
+void EngimonBase::set_id(int id) 
+{
+    this->engimon_id = id;
 }
 
 //Getter

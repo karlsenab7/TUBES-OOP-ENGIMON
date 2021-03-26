@@ -8,6 +8,7 @@
 #include "Peta.hpp"
 #include "Engimon.hpp"
 #include "Skill.hpp"
+#include "Battle.hpp"
 // #include "folderEngimon/Engimon.hpp"
 #include "Breed.hpp"
 //#include "Item.hpp"
@@ -40,16 +41,16 @@ class Player
         ~Player();
 
         //getter
-        // Engimon& get_active_engimon();
-        // Position get_active_engimon_pos();
-        // Peta getPeta();
+        Engimon& get_active_engimon();
+        Position get_active_engimon_pos();
+        Peta getPeta();
         
         // //setter
         void set_active_engimon(int engimonIdx);
-        // void set_active_engimon_pos(Position *pos);
-        // void change_active_engimon();
+        void set_active_engimon_pos(Position *pos);
+        void change_active_engimon();
 
-        // Position activeEngimonPos();
+        Position activeEngimonPos();
         //void addItem(Item what);
         void use_item();
         void addEngimon(Engimon);
@@ -58,7 +59,7 @@ class Player
         void moveX(int direction);
         void moveY(int direction);
         // void moveEngimon(int dirX, int dirY); //Kasih Exception 
-        // void get_battle();
+        void get_battle();
         void get_breeding();
         void moveUP();
         void moveDOWN();
@@ -107,24 +108,24 @@ void Player::showPeta()
 }
 
 
-// Engimon& Player::get_active_engimon()
-// {
-//     if (this->activeEngimonIdx == -1)
-//     {
-//         throw "tidak ada Engimon Aktif";
-//     }
+Engimon& Player::get_active_engimon()
+{
+    if (this->activeEngimonIdx == -1)
+    {
+        throw "tidak ada Engimon Aktif";
+    }
     
-//     return this->inventoryEngimon.getInventoryByIndex(this->activeEngimonIdx);
-// }
+    return this->inventoryEngimon.getInventoryByIndex(this->activeEngimonIdx);
+}
 
-// Peta Player::getPeta() {
-//     return *this->peta;
-// }
+Peta Player::getPeta() {
+    return *this->peta;
+}
 
-// Position Player::activeEngimonPos()
-// {
-//     return this->activeEngimonPosition;
-// }
+Position Player::activeEngimonPos()
+{
+    return this->activeEngimonPosition;
+}
         
 void Player::set_active_engimon(int engimonIdx)
 {
@@ -181,9 +182,7 @@ void Player::use_item()
             }
             else
             {
-                vector<Skill> ss;
-                ss.push_back(inventorySkill.getInventoryByIndex(skill-1));
-                inventoryEngimon.getInventoryByIndex(engimon-1).set_engimon_skills(ss);
+                inventoryEngimon.getInventoryByIndex(engimon-1).add_skill(inventorySkill.getInventoryByIndex(skill-1));
             }
         }
     }
@@ -222,6 +221,8 @@ void Player::moveX(int dir)
     {
         cout << "Out of map. Please try different direction !" << endl;
     } else {
+
+        
         
         // mengembalikan cell sebelumnya menjadi default
         //Cell *c = new Cell(this->position.getX(), this->position.getY(), grassland, air);
@@ -231,6 +232,14 @@ void Player::moveX(int dir)
 
         // mengubah cell tujuan
         this->position.setY(this->position.getY() + dir);
+
+        Position p(position.getX(), position.getY());
+
+        if (peta->getCell(p.getX(), p.getY()).getContent() == Content::engimon)
+        {
+            get_battle();
+            return;
+        }
         //Cell *d = new Cell(this->position.getX(), this->position.getY(), grassland, player);
         //peta->setCell(d->getPosition().getX(), d->getPosition().getY(), *d);
         
@@ -249,11 +258,21 @@ void Player::moveY(int dir)
         // mengembalikan cell sebelumnya menjadi default
         //Cell *c = new Cell(this->position.getX(), this->position.getY(), grassland, air);
         //peta->setCell(c->getPosition().getX(), c->getPosition().getY(), *c);
-
+        
         peta->setCellContent(this->position, Content::air);
+        
+        this->position.setX(this->position.getX() + dir);
+
+        Position p(position.getX(), position.getY());
+
+        if (peta->getCell(p.getX(), p.getY()).getContent() == Content::engimon)
+        {
+            get_battle();
+            return;
+        }
 
         // mengubah cell tujuan
-        this->position.setX(this->position.getX() + dir);
+        //this->position.setX(this->position.getX() + dir);
         //Cell *d = new Cell(this->position.getX(), this->position.getY(), grassland, player);
         //peta->setCell(d->getPosition().getX(), d->getPosition().getY(), *d);
         
@@ -288,10 +307,20 @@ void Player::moveLEFT()
 //     //Kemungkinan besar menyimpan posisi player sebelumnya
 // }
 
-// void Player::get_battle()
-// {
-//     //??????
-// }
+void Player::get_battle()
+{
+    if (activeEngimonIdx >= 0)
+    {
+        EngimonDatabase db;
+        int idxEnemy = peta->getCell(position.getX(), position.getY()).getIdxEngimonInCell();
+        cout << idxEnemy << "--------";
+        if (idxEnemy < 0)
+            return;
+
+        Battle battle(activeEngimonIdx, db.get_engimon_by_idx(idxEnemy), inventoryEngimon, inventorySkill);
+        battle.fight();
+    }
+}
 
 void Player::get_breeding()
 {

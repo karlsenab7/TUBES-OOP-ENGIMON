@@ -88,7 +88,7 @@ void GameManagement::executeCommand(string cmd)
     }
     else if (cmd == "battle")
     {
-        // p->get_battle();
+        p->get_battle();
     }
     else if (cmd == "i")
     {

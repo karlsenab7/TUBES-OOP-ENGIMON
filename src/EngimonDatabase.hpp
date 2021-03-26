@@ -35,7 +35,7 @@ class EngimonDatabase {
 
             string namafile = "Engimons.txt";
             ifstream ReadFile(namafile.c_str());
-
+            int i = 1;
             while (getline(ReadFile, spec_name, ',') && !ReadFile.eof())
             {
                 getline(ReadFile, elmt_temp, ',');
@@ -60,10 +60,12 @@ class EngimonDatabase {
                 string parents[2] = {"None", "None"};
                 
                 Engimon engimon = Engimon("-", parents, elmt_list, 1, 0, 0, spec_name, parents, skills_list);
+                engimon.set_id(i);
                 engimon_database.push_back(engimon);
                 skills_list.clear();
                 elmt_list.clear();
                 ss.clear();
+                i++;
             }
 
             ReadFile.close();
@@ -86,7 +88,7 @@ class EngimonDatabase {
             }
         }
 
-        Engimon get_engimon_by_element(vector<string> elements)
+        Engimon get_engimon_by_element(vector<Element> elements)
         {
             vector<Element> engimon_elmt;
 
@@ -129,6 +131,21 @@ class EngimonDatabase {
             ret.add_exp(random);
 
             return ret;
+        }
+
+        int get_idx_random_engimon_by_element(Element el)
+        {
+            Engimon e;
+            bool found = false;
+            while(!found)
+            {
+                Engimon e = get_random_engimon();
+
+                if (e.get_engimon_elements()[0] == el)
+                    found = true;
+            }
+
+            return e.get_engimon_id()-1;
         }
         
         int get_database_size()

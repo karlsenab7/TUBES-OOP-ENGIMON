@@ -9,6 +9,7 @@
 #include <fstream>
 #include <string>
 #include "Cell.hpp"
+#include "EngimonDatabase.hpp"
 using namespace std;
 
 //   ____       _                    _____      _                 _
@@ -24,7 +25,6 @@ private:
     int sizeX;
     int sizeY;
     vector<vector<Cell>> arrOfCell;
-    vector<int> arrOfEngimon; // tunggu Engimon.hpp selesai
 
 public:
     Peta();
@@ -39,9 +39,11 @@ public:
     void generatePeta();
     void showPeta();
     void showLegend();
-    void spawnMonster(vector<int> arrOfEngimonGlobal);
+    //void spawnMonster(vector<int> arrOfEngimonGlobal);
     void showPetaNLegend();
     void setCellContent(Position, Content);
+    int randomInt();
+    Cell getCell(int x, int y);
 };
 
 Peta::Peta()
@@ -58,8 +60,15 @@ int Peta::getSizeY() {
     return this->sizeY;
 }
 
+Cell Peta::getCell(int x, int y)
+{
+    return arrOfCell[x][y];
+}
+
 void Peta::generatePeta()
 {
+    EngimonDatabase db;
+    cout << "Loading..." <<endl;
     string filename;
     string dir = "../map/map1.txt";
 	string myText;
@@ -76,12 +85,66 @@ void Peta::generatePeta()
 			vector<Cell> temp;
             for (int i = 0; i < myText.length(); i++)
             {
-                
-                if (myText[i] == 'o') {
+                char ch = myText[i];
+                if (ch == 'o') 
+                {
                     Cell c(i, j, CellType::sea, Content::air);
+
+                    int timeToSpawn = randomInt();
+                    if (timeToSpawn < 3 && i != 0 && j != 0)
+                    {
+                        if (timeToSpawn % 2 == 0)
+                        {
+                            Element el("Water");
+                            int idx = db.get_idx_random_engimon_by_element(el);
+                            c.setContent(Content::engimon);
+                            c.setIdxEngimonInCell(idx);
+                            
+                        }
+                        else
+                        {
+                            Element el("Ice");
+                            int idx = db.get_idx_random_engimon_by_element(el);
+                            c.setContent(Content::engimon);
+                            c.setIdxEngimonInCell(idx);
+                        }
+                    }
+                    
                     temp.push_back(c);
-                } else {
+                } else 
+                {
                     Cell c(i, j, CellType::grassland, Content::air);
+
+                    int timeToSpawn = randomInt();
+
+                    if (timeToSpawn < 3 && i != 0 && j != 0)
+                    {
+                        if (timeToSpawn == 0)
+                        {
+                            Element el("Ground");
+                            int idx = db.get_idx_random_engimon_by_element(el);
+                            //cout << idx;
+                            c.setContent(Content::engimon);
+                            c.setIdxEngimonInCell(idx);
+                        }
+                        else if (timeToSpawn == 1)
+                        {
+                            Element el("Electric");
+                            int idx = db.get_idx_random_engimon_by_element(el);
+                            //cout << idx << " ";
+                            c.setContent(Content::engimon);
+                            c.setIdxEngimonInCell(idx);
+                        }
+                        else
+                        {
+                            Element el("Fire");
+                            int idx = db.get_idx_random_engimon_by_element(el);
+                            //cout << idx << " ";
+                            c.setContent(Content::engimon);
+                            c.setIdxEngimonInCell(idx);
+                        }
+                    }
+
                     temp.push_back(c);
                 }
             }
@@ -99,6 +162,15 @@ void Peta::generatePeta()
 	
 	// menutup file
 	MyReadFile.close();
+}
+
+int Peta::randomInt()
+{
+    srand(time(nullptr));
+
+    int num = rand() % 10;
+
+    return num;
 }
 
 void Peta::showPeta() {
@@ -135,24 +207,24 @@ void Peta::showPetaNLegend()
     this->showLegend();
 }
 
-void Peta::spawnMonster(vector<int> arrOfEngimonGlobal) // ganti int dengan Engimon
-{
-    int x = 0;
-    int y = 0;
-    do
-    {
-        srand(time(nullptr)); // use current time as seed for random generator
-        x = rand() % this->sizeX;
-        y = rand() % this->sizeY;
-    } while ((arrOfCell[x][y].getContent() != Content::air));
+// void Peta::spawnMonster(vector<int> arrOfEngimonGlobal) // ganti int dengan Engimon
+// {
+//     int x = 0;
+//     int y = 0;
+//     do
+//     {
+//         srand(time(nullptr)); // use current time as seed for random generator
+//         x = rand() % this->sizeX;
+//         y = rand() % this->sizeY;
+//     } while ((arrOfCell[x][y].getContent() != Content::air));
 
-    this->arrOfCell[x][y].setContent(Content::engimon);
-    int idx = arrOfEngimon.size();
-    int i = rand() % arrOfEngimonGlobal.size();
-    arrOfEngimon.push_back(arrOfEngimonGlobal[i]);
-    arrOfCell[x][y].setIdxEngimonInCell(idx);
-    // random engimon yang dimasukkan ke cell
-}
+//     this->arrOfCell[x][y].setContent(Content::engimon);
+//     int idx = arrOfEngimon.size();
+//     int i = rand() % arrOfEngimonGlobal.size();
+//     arrOfEngimon.push_back(arrOfEngimonGlobal[i]);
+//     arrOfCell[x][y].setIdxEngimonInCell(idx);
+//     // random engimon yang dimasukkan ke cell
+// }
 
 void Peta::setCell(int pX, int pY, Cell c) {
     this->arrOfCell[pX][pY] = c;
