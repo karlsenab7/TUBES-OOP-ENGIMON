@@ -44,6 +44,7 @@ class Skill {
         void masteryUp();
         bool canBeLearned(Element element);
         void print();
+        void setMastery(int);
 };
 
 
@@ -156,9 +157,9 @@ void Skill::print(){
     }
 }
 
-
-
-
-
+void Skill::setMastery(int mas)
+{
+    this->mastery = mas;
+}
 
 #endif

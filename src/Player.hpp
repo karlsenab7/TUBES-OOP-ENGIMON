@@ -9,7 +9,7 @@
 #include "Engimon.hpp"
 #include "Skill.hpp"
 // #include "folderEngimon/Engimon.hpp"
-//#include "Breed.hpp"
+#include "Breed.hpp"
 //#include "Item.hpp"
 
 using namespace std;
@@ -59,7 +59,7 @@ class Player
         void moveY(int direction);
         // void moveEngimon(int dirX, int dirY); //Kasih Exception 
         // void get_battle();
-        // void get_breeding();
+        void get_breeding();
         void moveUP();
         void moveDOWN();
         void moveRIGHT();
@@ -160,7 +160,7 @@ void Player::use_item()
     cout << "Select Skill item : ";
     int skill;
     cin >> skill;
-    if (skill > inventorySkill.getInventory().size())
+    if (skill > inventorySkill.getInventory().size() || skill < 1)
     {
         cout << "Input is incorrect!!\n\n";
     }
@@ -169,7 +169,7 @@ void Player::use_item()
         cout << "Select target engimon!!";
         int engimon;
         cin >> engimon;
-        if (engimon > inventoryEngimon.getInventory().size())
+        if (engimon > inventoryEngimon.getInventory().size() || engimon < 1)
         {
             cout << "Input is incorrect!!\n\n";
         }
@@ -293,27 +293,46 @@ void Player::moveLEFT()
 //     //??????
 // }
 
-// void Player::get_breeding()
-// {
-//     int idxE1 = 0;
-//     int idxE2 = 1;
-//     Engimon e1 = inventoryEngimon.getInventoryByIndex(idxE1);
-//     Engimon e2 = inventoryEngimon.getInventoryByIndex(idxE2);
+void Player::get_breeding()
+{
 
-//     string name;
-//     cout << "Give name for child : ";
-//     cin >> name;
+    int idxE1 = 0;
+    int idxE2 = 1;
+
+    cout << "Select Engimon 1 : ";
+    cin >> idxE1;
+    cout << "Select Engimon 2 : ";
+    cin >> idxE2;
     
-//     Breed breed(e1, e2, name);
+    if (
+        idxE2 == idxE1 || 
+        idxE1 > inventoryEngimon.getInventory().size() || 
+        idxE2 > inventoryEngimon.getInventory().size() ||
+        idxE1 < 1 ||
+        idxE2 < 1
+        )
+    {
+        cout << "Input is incorrect!!\n\n";
+        return;
+    }
 
-//     cout << "Breeding selesai!!" << endl;
-//     Engimon child = breed.get_child();
+    Engimon e1 = inventoryEngimon.getInventoryByIndex(idxE1);
+    Engimon e2 = inventoryEngimon.getInventoryByIndex(idxE2);
 
-//     inventoryEngimon.addInventory(child);
+    string name;
+    cout << "Give name for child : ";
+    cin >> name;
+    
+    Breed breed(e1, e2, name);
 
-//     //implementasi breeding (????????)
-//     //mungkin ini maksudnya proses breedingnya?
-// }
+    cout << "Breeding selesai!!" << endl;
+    Engimon child = breed.get_child();
+
+    inventoryEngimon.addInventory(child);
+
+    //implementasi breeding (????????)
+    //mungkin ini maksudnya proses breedingnya?
+}
 
 
 void Player::inventoryMode()
@@ -364,7 +383,7 @@ void Player::inventoryMode()
         }
         else if (mode == "5")
         {
-
+            get_breeding();
         }
         
 

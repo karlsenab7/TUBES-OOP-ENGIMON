@@ -18,7 +18,7 @@ private:
     
 
 public:
-    Breed(Engimon, Engimon, string);
+    Breed(Engimon&, Engimon&, string);
     Breed(const Breed&);
     ~Breed();
     
@@ -29,8 +29,8 @@ public:
     Engimon get_child();
     Engimon breed(string);
 
-    void set_first(Engimon);
-    void set_second(Engimon);
+    void set_first(Engimon&);
+    void set_second(Engimon&);
     void giveName(string);
     
     Engimon getNewEngimonFromDatabase(string, vector<Element>);
@@ -45,8 +45,11 @@ public:
     // int getElementAdvantage(string, string);
 };
 
-Breed::Breed(Engimon e1, Engimon e2, string name)
+Breed::Breed(Engimon& e1, Engimon& e2, string name)
 {
+    if (e1.get_level() < 31 || e2.get_level() < 31)
+        throw "Breeding failed!! Engimon Level is less than or equal 30";
+
     this->first = e1;
     this->second = e2;
 
@@ -81,12 +84,12 @@ Engimon Breed::get_child()
     return this->child;
 }
 
-void Breed::set_first(Engimon e)
+void Breed::set_first(Engimon& e)
 {
     this->first = e;
 }
 
-void Breed::set_second(Engimon e)
+void Breed::set_second(Engimon& e)
 {
     this->second = e;
 }
@@ -233,14 +236,22 @@ Engimon Breed::breed(string name)
     string species;
     vector<Element> childElement = inheritElement(species);
 
-    Engimon e = getNewEngimonFromDatabase(species, childElement);
+    // PERLU IMPLEMENTASI
+    Engimon e;
+    //Engimon e = getNewEngimonFromDatabase(species, childElement);
 
     for (int i = 0; i < childSkill.size(); i++)
         e.add_skill(childSkill[i]);
     
     e.set_engimon_name(name);
 
+    string parents[] = {first.get_engimon_name(), second.get_engimon_name()};
+    e.set_engimon_parents_names(parents);
+
     // MENGURANGI LEVEL INDUK
+
+    first.set_level(first.get_level()-30);
+    second.set_level(second.get_level()-30);
 
     return e;
 }
