@@ -1,0 +1,8 @@
+Thermicta,Fire,T01,Thermite_Shot,30,Fire,Shoot_super_hot_thermite
+Piscaria,Water,P01,Viscous_Flood,30,Water,Expel_great_amounts_of_viscous_liquid
+Galvanine,Electric,G01,Thunderous_Bark,30,Electric,Send_an_overcharged_bark
+Maharadjah,Ground,M01,Majestic_Earth,30	Ground,Summon_stone_guards_to_attack
+Frothood,Ice,F01,Ice_Sickle,30,Ice,Attack_with_a_sharp_sickle_from_ice
+Plasmodon,Fire/Electric,P02,Plasma_Launcher,30,Fire,Launch_a_strong_plasma_charge
+Warmaberg,Ice/Water,W01,Meltdown,30,Water,Create_giant_flood_by_melting_body_parts
+Swampodile,Water/Ground,S01,Giant_Jaw,30,Ground,Form_a_giant_jaw_from_malleable_clay
