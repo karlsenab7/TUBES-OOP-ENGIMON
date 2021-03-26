@@ -45,13 +45,13 @@ class Player
         // Peta getPeta();
         
         // //setter
-        // void set_active_engimon(int engimonIdx);
+        void set_active_engimon(int engimonIdx);
         // void set_active_engimon_pos(Position *pos);
         // void change_active_engimon();
 
         // Position activeEngimonPos();
         //void addItem(Item what);
-        // void use_item();
+        void use_item();
         void addEngimon(Engimon);
         void addSkill(Skill);
         // void showInventory();
@@ -71,6 +71,7 @@ class Player
         void showEngimonInventory();
         void showSkillInventory();
         void inventoryMode();
+        void invCommand();
 };
 
 Player::Player() : position(default_player_posX,default_player_posY), activeEngimonIdx(-1)
@@ -125,13 +126,13 @@ void Player::showPeta()
 //     return this->activeEngimonPosition;
 // }
         
-// void Player::set_active_engimon(int engimonIdx)
-// {
-//     if (this->inventoryEngimon.get_total_stored_item() >= engimonIdx+1)
-//     {
-//         this->activeEngimonIdx = engimonIdx;
-//     }
-// }
+void Player::set_active_engimon(int engimonIdx)
+{
+    if (this->inventoryEngimon.get_total_stored_item() >= engimonIdx+1)
+    {
+        this->activeEngimonIdx = engimonIdx;
+    }
+}
 
 // void Player::set_active_engimon_pos(Position *pos)
 // {
@@ -153,10 +154,40 @@ void Player::addSkill(Skill what)
     
 }
 
-// void Player::use_item()
-// {
-//     //implementasi use item
-// }
+void Player::use_item()
+{
+    //implementasi use item
+    cout << "Select Skill item : ";
+    int skill;
+    cin >> skill;
+    if (skill > inventorySkill.getInventory().size())
+    {
+        cout << "Input is incorrect!!\n\n";
+    }
+    else
+    {
+        cout << "Select target engimon!!";
+        int engimon;
+        cin >> engimon;
+        if (engimon > inventoryEngimon.getInventory().size())
+        {
+            cout << "Input is incorrect!!\n\n";
+        }
+        else
+        {
+            if (inventoryEngimon.getInventoryByIndex(engimon-1).is_skill_already_learned(inventorySkill.getInventoryByIndex(skill-1)))
+            {
+                cout << "Skill is already learned\n\n";
+            }
+            else
+            {
+                vector<Skill> ss;
+                ss.push_back(inventorySkill.getInventoryByIndex(skill-1));
+                inventoryEngimon.getInventoryByIndex(engimon-1).set_engimon_skills(ss);
+            }
+        }
+    }
+}
 
 void Player::addEngimon(Engimon what)
 {
@@ -288,25 +319,75 @@ void Player::moveLEFT()
 void Player::inventoryMode()
 {
     cout << "Open inventory\n\n";
-    char cmd;
-    char mode = '1';
+    string cmd;
+    string mode = "1";
     do
     {
-        if (mode == '1')
+        if (mode == "1")
         {
             showEngimonInventory();
         }
-        else if (mode == '2')
+        else if (mode == "2")
         {
             showSkillInventory();
         }
+        else if (mode == "3")
+        {
+            int en;
+            try
+            {
+            
+                cout << "select engimon : ";
+                cin >> en;
+                en += 0;
+                if (en > inventoryEngimon.getInventory().size())
+                {
+                    cout << "Input is incorrect!!\n\n";
+                
+                }
+                else
+                {
+                    activeEngimonIdx = en - 1;
+                }
 
+                showEngimonInventory();
+            }
+            catch(const exception& e)
+            {
+                cout << "Input is incorrect!!\n";
+            }
+            
+        }
+        else if (mode == "4")
+        {
+            use_item();
+        }
+        else if (mode == "5")
+        {
+
+        }
+        
+
+
+        invCommand();
         cout << "\n<<< " ;
         cin >> cmd;
         mode = cmd;
 
-    } while (mode != '3');
+    } while (mode != "0");
     cout << "Close Inventory\n";
+}
+
+void Player::invCommand()
+{
+    cout << endl;
+    cout << "1. Show Engimon Inventory\n";
+    cout << "2. Show Skill Inventory\n";
+    cout << "3. Switch Active Engimon\n";
+    cout << "4. Learn Skill To Engimon\n";
+    cout << "5. Breeding Engimon\n";
+    cout << "0. Exit\n";
+    cout << "Input a Number!\n";
 }
 
 

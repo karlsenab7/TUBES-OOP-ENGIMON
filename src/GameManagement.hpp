@@ -86,10 +86,6 @@ void GameManagement::executeCommand(string cmd)
     {
         p->moveRIGHT();
     }
-    else if (cmd == "breed")
-    {
-        //p->get_breeding();
-    }
     else if (cmd == "battle")
     {
         // p->get_battle();
@@ -97,18 +93,6 @@ void GameManagement::executeCommand(string cmd)
     else if (cmd == "i")
     {
         p->inventoryMode();
-    }
-    else if (cmd == "use")
-    {
-        // p->use_item();
-    }
-    else if (cmd == "e")
-    {
-        // p->change_active_engimon();
-    }
-    else if (cmd == "l")
-    {
-        
     }
 }
 
