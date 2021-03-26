@@ -1,0 +1,140 @@
+\hypertarget{class_skill}{}\doxysection{Skill Class Reference}
+\label{class_skill}\index{Skill@{Skill}}
+
+
+{\ttfamily \#include $<$Skill.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_skill_a6c9744daafff69cda66b50788247c36d}{Skill}} (string ID, string name, vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$ element, int power, string desc, bool is\+Unique, string unique\+To)
+\item 
+\mbox{\hyperlink{class_skill_a09c4e7e78e10ea5bc4b4c0af85b4aa0a}{Skill}} ()
+\item 
+\mbox{\hyperlink{class_skill_a874a7760ec9551a4a845c6bfbceae7f2}{Skill}} (string species)
+\item 
+\mbox{\hyperlink{class_skill_a3bfdc5bc55f481e0775dde929c9d86ab}{Skill}} (const \mbox{\hyperlink{class_skill}{Skill}} \&s)
+\item 
+\mbox{\hyperlink{class_skill}{Skill}} \& \mbox{\hyperlink{class_skill_af770d5644569ca0b7ef2c95d680b379a}{operator=}} (const \mbox{\hyperlink{class_skill}{Skill}} \&s)
+\item 
+string \mbox{\hyperlink{class_skill_a4e58dc7a6cfcae763e2b566521c422f2}{get\+ID}} ()
+\item 
+string \mbox{\hyperlink{class_skill_a9d779405855f9af0568e9336f4545140}{get\+Name}} ()
+\item 
+vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$ \mbox{\hyperlink{class_skill_ad1e3dbed82e2b08d63c5bd2e405d71a7}{get\+Element}} ()
+\item 
+int \mbox{\hyperlink{class_skill_aa6c51cd11c99ea72dcee9b6f634b59e6}{get\+Power}} ()
+\item 
+int \mbox{\hyperlink{class_skill_a0c36d8f6ecd25e1e209d4d393e6db9cf}{get\+Mastery}} ()
+\item 
+string \mbox{\hyperlink{class_skill_aa0b4cac00bca7756601fcfb9c598f13e}{get\+Description}} ()
+\item 
+void \mbox{\hyperlink{class_skill_a217705c2238de43fa3ff22506dfcaf08}{mastery\+Up}} ()
+\item 
+bool \mbox{\hyperlink{class_skill_a3ae08e8dfe1ab4a12a90fa2ca1b733fb}{can\+Be\+Learned}} (\mbox{\hyperlink{class_element}{Element}} element)
+\item 
+void \mbox{\hyperlink{class_skill_a18bed42110aa509e89449ce56dc338b1}{print}} ()
+\item 
+void \mbox{\hyperlink{class_skill_a0a89e26506a17f4c086e842f72a49d97}{set\+Mastery}} (int)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_skill_a6c9744daafff69cda66b50788247c36d}\label{class_skill_a6c9744daafff69cda66b50788247c36d}} 
+\index{Skill@{Skill}!Skill@{Skill}}
+\index{Skill@{Skill}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{Skill()}{Skill()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Skill\+::\+Skill (\begin{DoxyParamCaption}\item[{string}]{ID,  }\item[{string}]{name,  }\item[{vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$}]{element,  }\item[{int}]{power,  }\item[{string}]{desc,  }\item[{bool}]{is\+Unique = {\ttfamily false},  }\item[{string}]{unique\+To = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_a09c4e7e78e10ea5bc4b4c0af85b4aa0a}\label{class_skill_a09c4e7e78e10ea5bc4b4c0af85b4aa0a}} 
+\index{Skill@{Skill}!Skill@{Skill}}
+\index{Skill@{Skill}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{Skill()}{Skill()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Skill\+::\+Skill (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_a874a7760ec9551a4a845c6bfbceae7f2}\label{class_skill_a874a7760ec9551a4a845c6bfbceae7f2}} 
+\index{Skill@{Skill}!Skill@{Skill}}
+\index{Skill@{Skill}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{Skill()}{Skill()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Skill\+::\+Skill (\begin{DoxyParamCaption}\item[{string}]{species }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_a3bfdc5bc55f481e0775dde929c9d86ab}\label{class_skill_a3bfdc5bc55f481e0775dde929c9d86ab}} 
+\index{Skill@{Skill}!Skill@{Skill}}
+\index{Skill@{Skill}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{Skill()}{Skill()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Skill\+::\+Skill (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_skill}{Skill}} \&}]{s }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_skill_a3ae08e8dfe1ab4a12a90fa2ca1b733fb}\label{class_skill_a3ae08e8dfe1ab4a12a90fa2ca1b733fb}} 
+\index{Skill@{Skill}!canBeLearned@{canBeLearned}}
+\index{canBeLearned@{canBeLearned}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{canBeLearned()}{canBeLearned()}}
+{\footnotesize\ttfamily bool Skill\+::can\+Be\+Learned (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_element}{Element}}}]{element }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_aa0b4cac00bca7756601fcfb9c598f13e}\label{class_skill_aa0b4cac00bca7756601fcfb9c598f13e}} 
+\index{Skill@{Skill}!getDescription@{getDescription}}
+\index{getDescription@{getDescription}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{getDescription()}{getDescription()}}
+{\footnotesize\ttfamily string Skill\+::get\+Description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_ad1e3dbed82e2b08d63c5bd2e405d71a7}\label{class_skill_ad1e3dbed82e2b08d63c5bd2e405d71a7}} 
+\index{Skill@{Skill}!getElement@{getElement}}
+\index{getElement@{getElement}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{getElement()}{getElement()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_element}{Element}} $>$ Skill\+::get\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_a4e58dc7a6cfcae763e2b566521c422f2}\label{class_skill_a4e58dc7a6cfcae763e2b566521c422f2}} 
+\index{Skill@{Skill}!getID@{getID}}
+\index{getID@{getID}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{getID()}{getID()}}
+{\footnotesize\ttfamily string Skill\+::get\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_a0c36d8f6ecd25e1e209d4d393e6db9cf}\label{class_skill_a0c36d8f6ecd25e1e209d4d393e6db9cf}} 
+\index{Skill@{Skill}!getMastery@{getMastery}}
+\index{getMastery@{getMastery}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{getMastery()}{getMastery()}}
+{\footnotesize\ttfamily int Skill\+::get\+Mastery (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_a9d779405855f9af0568e9336f4545140}\label{class_skill_a9d779405855f9af0568e9336f4545140}} 
+\index{Skill@{Skill}!getName@{getName}}
+\index{getName@{getName}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Skill\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_aa6c51cd11c99ea72dcee9b6f634b59e6}\label{class_skill_aa6c51cd11c99ea72dcee9b6f634b59e6}} 
+\index{Skill@{Skill}!getPower@{getPower}}
+\index{getPower@{getPower}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{getPower()}{getPower()}}
+{\footnotesize\ttfamily int Skill\+::get\+Power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_a217705c2238de43fa3ff22506dfcaf08}\label{class_skill_a217705c2238de43fa3ff22506dfcaf08}} 
+\index{Skill@{Skill}!masteryUp@{masteryUp}}
+\index{masteryUp@{masteryUp}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{masteryUp()}{masteryUp()}}
+{\footnotesize\ttfamily void Skill\+::mastery\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_af770d5644569ca0b7ef2c95d680b379a}\label{class_skill_af770d5644569ca0b7ef2c95d680b379a}} 
+\index{Skill@{Skill}!operator=@{operator=}}
+\index{operator=@{operator=}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_skill}{Skill}} \& Skill\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_skill}{Skill}} \&}]{s }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_a18bed42110aa509e89449ce56dc338b1}\label{class_skill_a18bed42110aa509e89449ce56dc338b1}} 
+\index{Skill@{Skill}!print@{print}}
+\index{print@{print}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Skill\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_skill_a0a89e26506a17f4c086e842f72a49d97}\label{class_skill_a0a89e26506a17f4c086e842f72a49d97}} 
+\index{Skill@{Skill}!setMastery@{setMastery}}
+\index{setMastery@{setMastery}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{setMastery()}{setMastery()}}
+{\footnotesize\ttfamily void Skill\+::set\+Mastery (\begin{DoxyParamCaption}\item[{int}]{mas }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_skill_8hpp}{Skill.\+hpp}}\end{DoxyCompactItemize}
