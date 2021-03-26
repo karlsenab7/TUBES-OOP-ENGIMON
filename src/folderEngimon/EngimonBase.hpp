@@ -5,8 +5,6 @@
 #include <iostream>
 #include "../Element.hpp"
 
-#define LEVELCAP = 35;
-
 using namespace std;
 
 class EngimonBase {
@@ -19,6 +17,7 @@ class EngimonBase {
         vector<Element> engimon_elements;
 
         int level, exp, cum_exp;
+        const int level_cap = 35;
     
     public:
         //Constructors
@@ -149,11 +148,11 @@ void EngimonBase::set_cum_exp(int _cum_exp) { cum_exp = _cum_exp; }
 void EngimonBase::add_exp(int add) {
     cum_exp += add;
     exp += add;
-    if (exp > 100) {
+    while (exp > 100) {
         level += 1;
         exp -= 100;
     }
-    if (level >= LEVELCAP) {
+    if (level >= level_cap) {
         throw "level cap reached";
     }
 }
