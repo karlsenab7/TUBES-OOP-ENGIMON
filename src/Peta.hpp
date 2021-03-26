@@ -4,8 +4,8 @@
 
 #include <iostream>
 #include <vector>
-#include <cstdlib>
-#include <ctime>
+#include <stdlib.h>
+#include <time.h>
 #include <fstream>
 #include <string>
 #include "Cell.hpp"
@@ -34,14 +34,14 @@ public:
     int getSizeY();
 
     // setter
-    void Peta::setCell(int pX, int pY, Cell c);
+    void setCell(int pX, int pY, Cell c);
 
     void generatePeta();
     void showPeta();
     void showLegend();
     void spawnMonster(vector<int> arrOfEngimonGlobal);
     void showPetaNLegend();
-    
+    void setCellContent(Position, Content);
 };
 
 Peta::Peta()
@@ -61,7 +61,7 @@ int Peta::getSizeY() {
 void Peta::generatePeta()
 {
     string filename;
-    string dir = "map/map1.txt";
+    string dir = "../map/map1.txt";
 	string myText;
     // cin >> filename;
 	cout << endl;
@@ -126,11 +126,12 @@ void Peta::showLegend()
     cout << "L/l: Fire/Electric engimon" << endl;
     cout << "S/s: Water/Ice engimon" << endl;
     cout << "N.n: Water/Ground engimon" << endl;
+    //cout << "===================================================\n\n";
 }
 
 void Peta::showPetaNLegend()
 {
-    this->generatePeta();
+    this->showPeta();
     this->showLegend();
 }
 
@@ -155,6 +156,11 @@ void Peta::spawnMonster(vector<int> arrOfEngimonGlobal) // ganti int dengan Engi
 
 void Peta::setCell(int pX, int pY, Cell c) {
     this->arrOfCell[pX][pY] = c;
+}
+
+void Peta::setCellContent(Position p, Content c)
+{
+    arrOfCell[p.getX()][p.getY()].setContent(c);
 }
 
 #endif

@@ -32,7 +32,7 @@ class Inventory
         vector<int>& getInventoryCount();
         int getInventoryCountByIndex(int index);
         T& getInventoryByIndex(int index);
-        int getJumlahItem(int index);
+        //int getJumlahItem(int index);
         int getJumlahItem(int index){
             return this->countElement[i];
         }

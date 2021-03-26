@@ -18,7 +18,7 @@ private:
 public:
     Cell(Position newPosition, CellType newCellType, Content newContent);
     Cell(int pX, int pY, CellType newCellType, Content newContent);
-    Cell Cell::operator=(const Cell& otherCell);
+    Cell& operator=(const Cell& otherCell);
 
     // getter
     Position getPosition();
@@ -49,7 +49,7 @@ Cell::Cell(int pX, int pY, CellType newCellType, Content newContent)
     this->content = newContent;
 }
 
-Cell Cell::operator=(const Cell& otherCell) {
+Cell& Cell::operator=(const Cell& otherCell) {
     this->position = otherCell.position;
     this->cellType = otherCell.cellType;
     this->content = otherCell.content;
@@ -75,7 +75,7 @@ char Cell::getCharCell()
     }
     else if (content == Content::engimon)
     {
-        /* code */
+        return 'E';
     }
     else if (content == Content::air)
     {
@@ -87,6 +87,8 @@ char Cell::getCharCell()
             return 'o';
         }
     }
+    
+    return '#';
 }
 
 Content Cell::getContent()

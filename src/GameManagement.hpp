@@ -11,8 +11,7 @@ using namespace std;
 class GameManagement
 {
 private:
-    Peta map;
-    Player p;
+    Player *p = new Player();
 public:
     GameManagement();
     ~GameManagement();
@@ -22,13 +21,12 @@ public:
     void conti();
     void exit();
     void loadData();
-    void exit();
     void save();
     void executeCommand(string);
 
 };
 
-GameManagement::GameManagement() : map()
+GameManagement::GameManagement()
 {
 }
 
@@ -45,8 +43,13 @@ void GameManagement::newGame()
         cin >> name;
     }
     
-    p.set_name(name);
+    p->set_name(name);
     loadData();
+}
+
+void GameManagement::loadData()
+{
+
 }
 
 void GameManagement::run()
@@ -55,7 +58,10 @@ void GameManagement::run()
 
     while (1)
     {
+        p->showPeta();
+        cout << "\n======================================\n";
         executeCommand(in.getInput());
+        cout << "======================================\n\n";
     }
     
 }
@@ -64,39 +70,39 @@ void GameManagement::executeCommand(string cmd)
 {
     if (cmd == "w")
     {
-        p.moveUP();
+        p->moveUP();
     }
     else if (cmd == "a")
     {
-        p.moveLEFT();
+        p->moveLEFT();
     }
     else if (cmd == "s")
     {
-        p.moveDOWN();
+        p->moveDOWN();
     }
     else if (cmd == "d")
     {
-        p.moveRIGHT();
+        p->moveRIGHT();
     }
     else if (cmd == "breed")
     {
-        p.get_breeding();
+        //p->get_breeding();
     }
     else if (cmd == "battle")
     {
-        p.get_battle();
+        // p->get_battle();
     }
     else if (cmd == "i")
     {
-        p.showInventory();
+        // p->showInventory();
     }
     else if (cmd == "use")
     {
-        p.use_item();
+        // p->use_item();
     }
     else if (cmd == "e")
     {
-        p.change_active_engimon();
+        // p->change_active_engimon();
     }
 }
 
