@@ -14,14 +14,14 @@ using namespace std;
 class Battle
 {
 private:
-    Engimon first;
+    int idxOwnEngimon;
     Engimon second;
     Inventory<Engimon> inventoryEngimon;
     Inventory<Skill> inventorySkill;
 
 
 public:
-    Battle(Engimon, Engimon, Inventory<Engimon>&, Inventory<Skill>&);
+    Battle(int, Engimon, Inventory<Engimon>&, Inventory<Skill>&);
     ~Battle();
 
     // getter
@@ -29,7 +29,7 @@ public:
     Engimon get_second();
 
     // setter
-    void set_first(Engimon);
+    void set_first(int);
     void set_second(Engimon);
 
     //Method
@@ -42,9 +42,9 @@ public:
     void get_penalty();
 };
 
-Battle::Battle(Engimon e1, Engimon e2, Inventory<Engimon> &inventoryEngimon, Inventory<Skill> &inventorySKill)
+Battle::Battle(int e1, Engimon e2, Inventory<Engimon> &inventoryEngimon, Inventory<Skill> &inventorySKill)
 {
-    this->first = e1;
+    this->idxOwnEngimon = e1;
     this->second = e2;
     this->inventoryEngimon = inventoryEngimon;
     this->inventorySkill = inventorySkill;
@@ -56,7 +56,7 @@ Battle::~Battle()
 
 Engimon Battle:: get_first()
 {
-    return this->first;
+    return idxOwnEngimon;
 }
 
 Engimon Battle:: get_second()
@@ -64,9 +64,9 @@ Engimon Battle:: get_second()
     return this->second;
 }
 
-void Battle::set_first(Engimon e)
+void Battle::set_first(int e)
 {
-    this->first = e;
+    this->idxOwnEngimon = e;
 }
 
 void Battle::set_second(Engimon e)
@@ -103,8 +103,8 @@ float Battle::sum_power(Engimon e1, vector <Element> els2) //Menunggu class skil
 
 void Battle::fight()
 {
-    float fp1 = sum_power(first, second.get_engimon_elements());
-    float fp2 = sum_power(second, first.get_engimon_elements());
+    float fp1 = sum_power(inventoryEngimon.getInventory()[idxOwnEngimon], second.get_engimon_elements());
+    float fp2 = sum_power(second, inventoryEngimon.getInventory()[idxOwnEngimon].get_engimon_elements());
     //Memberi interface ke user
     if (fp1 > fp2)
     {
@@ -130,11 +130,14 @@ void Battle::lose()
 
 void Battle::get_reward()
 {
-    Skill e;
+    vector<Skill> skills = second.get_engimon_skills();
+    Skill s = skills[0];
+    inventorySkill.addInventory(s);
+    inventoryEngimon.getInventory()[idxOwnEngimon].add_exp(40);
 }
 
 void Battle::get_penalty()
 {
-
+    inventoryEngimon.removeInventory(idxOwnEngimon);
 }
 #endif
