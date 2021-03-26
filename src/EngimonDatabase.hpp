@@ -6,6 +6,9 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "Engimon.hpp"
 
@@ -112,11 +115,22 @@ class EngimonDatabase {
             throw "No engimon with that element";
         }
 
-        //Engimon get_random_engimon()
-        //{
-        
-        //}
+        int randomizer(int lower, int higher)
+        {
+            srand(time(NULL));
+            return rand() % higher + lower;
+        }
+        Engimon get_random_engimon()
+        {
+            int random = randomizer(0, engimon_database.size()-1);
+            Engimon ret = engimon_database[random];
 
+            random = randomizer(100, 3200);
+            ret.add_exp(random);
+
+            return ret;
+        }
+        
         int get_database_size()
         {
             return engimon_database.size();
