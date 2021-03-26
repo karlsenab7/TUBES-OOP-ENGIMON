@@ -6,6 +6,7 @@
 #include "Player.hpp"
 #include "Engimon.hpp"
 #include "Input.hpp"
+#include "SkillDatabase.hpp"
 
 using namespace std;
 
@@ -50,7 +51,7 @@ void GameManagement::newGame()
 
 void GameManagement::loadData()
 {
-
+    initSkillDatabase();
 }
 
 void GameManagement::run()

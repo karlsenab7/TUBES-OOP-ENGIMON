@@ -30,7 +30,7 @@ class Player
         Position activeEngimonPosition;
         Peta *peta = new Peta();
         Inventory<Engimon> inventoryEngimon;
-        Inventory<Skill> inventoryItem;
+        Inventory<Skill> inventorySkill;
         int activeEngimonIdx;
         //int max_capacity;
     
@@ -52,8 +52,8 @@ class Player
         // Position activeEngimonPos();
         //void addItem(Item what);
         // void use_item();
-        // void addEngimon(Engimon currEngimon);
-        // void addSkill(Skill itemSkill);
+        void addEngimon(Engimon);
+        void addSkill(Skill);
         // void showInventory();
         void moveX(int direction);
         void moveY(int direction);
@@ -69,6 +69,7 @@ class Player
         void set_name(string);
         void showPeta();
         void showEngimonInventory();
+        void showSkillInventory();
         
 };
 
@@ -81,7 +82,7 @@ Player::Player() : position(default_player_posX,default_player_posY), activeEngi
     peta->setCell(c->getPosition().getX(), c->getPosition().getY(), *c);
     this->position.setX(0);
     this->position.setY(0);
-    peta->showPeta();
+    // peta->showPeta();
     //-------------------------------------------------------------------//
 } 
 
@@ -134,28 +135,36 @@ void Player::showPeta()
 //     this->activeEngimonPosition.setY(pos->getY());
 // }
 
-// void Player::addItem(Item what)
-// {
-//     if(this->max_capacity < this->inventoryEngimon.getTotalItem()){
-//        this->inventoryItem.addInventory(what);   
-//    } else {
-//        throw "Inventory Penuh";
-//    }
-// }
+void Player::addSkill(Skill what)
+{
+    try
+    {
+        cout << "d\n";
+        this->inventorySkill.addInventory(what);
+    }
+    catch(string& e)
+    {
+        cout << e << '\n';
+    }
+    
+}
 
 // void Player::use_item()
 // {
 //     //implementasi use item
 // }
 
-// void Player::addEngimon(Engimon currEngimon)
-// {
-//     if(this->max_capacity < this->inventoryEngimon.getTotalItem()){
-//         this->inventoryEngimon.addInventory(currEngimon);
-//     } else {
-//         throw "Inventory Penuh";
-//     }
-// }
+void Player::addEngimon(Engimon what)
+{
+    try
+    {
+        this->inventoryEngimon.addInventory(what);
+    }
+    catch(string& e)
+    {
+        cout << e << '\n';
+    }
+}
 
 // void Player::showInventory()
 // {
@@ -292,6 +301,35 @@ void Player::showEngimonInventory()
         
     }
     cout << "-----------------------------------\n";
+    
+}
+
+void Player::showSkillInventory()
+{
+    cout << "-----------------------------------\n";
+    if (inventorySkill.getTotalItem() == 0)
+    {
+        cout << "** SKILL INVENTORY IS EMPTY **" << endl;
+    }
+    else
+    {
+        vector<int> countEl = inventorySkill.getInventoryCount();
+        vector<Skill> s = inventorySkill.getInventory();
+        for (int i = 0; i < countEl.size(); i++)
+        {
+            cout << i + 1 << ".  ";
+            cout << countEl[i] << "x ";
+            cout << s[i].getName() 
+            << " - Power :  " 
+            << s[i].getPower() 
+            << " - Mastery Level : "
+            << s[i].getMastery()
+            << endl;
+        }
+        
+    }
+    cout << "-----------------------------------\n";
+    
 }
 
 #endif

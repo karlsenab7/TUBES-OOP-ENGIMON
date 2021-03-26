@@ -9,7 +9,7 @@
 #include "Element.hpp"
 #include "SkillDatabase.hpp"
 using namespace std;
-class Skill : SkillDatabase {
+class Skill {
     private:
         string ID;
         string name;
@@ -61,10 +61,13 @@ Skill::Skill(string ID, string name, vector<Element> element, int power, string 
     this->mastery = 1;
 }
 Skill::Skill(){
-    int idx;
+
+    srand(time(nullptr));
+    int idx = 0;
     do{
         idx = rand() % getSize();
     }while(getIsUniqueList(idx));
+    
     this->ID  = getIDList(idx);
     this->name = getNameList(idx);
     for(int i = 0; i < getElementList(idx).size(); i++){
@@ -100,6 +103,7 @@ Skill::Skill(const Skill& s){
     for(int i = 0; i < element.size(); i++){
         this->element.push_back(element[i]);
     }
+    this->power = s.power;
     this->description = s.description;
     this->isUnique = s.isUnique;
     this->uniqueTo = s.uniqueTo;
@@ -111,6 +115,7 @@ Skill& Skill::operator=(const Skill& s){
     for(int i = 0; i < element.size(); i++){
         this->element.push_back(element[i]);
     }
+    this->power = s.power;
     this->description = s.description;
     this->isUnique = s.isUnique;
     this->uniqueTo = s.uniqueTo;

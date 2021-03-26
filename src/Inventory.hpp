@@ -48,9 +48,9 @@ class Inventory
         // setter
         void set_max_capacity(int newMax);
         void set_total_stored_item(int newTotal);
-        void addInventory(const T& items);
+        void addInventory(T items);
         void removeInventory(int index);
-        bool isEqualEngimon(T e1, T e2);
+        bool isEqual(T, T);
 };
 
 template <class T>
@@ -137,38 +137,62 @@ void Inventory<T>::set_total_stored_item(int newTotal)
 }
 
 template <class T>
-void Inventory<T>::addInventory(const T& items)
+void Inventory<T>::addInventory(T items)
 {
-    if (this->total_stored_item >= this->max_capacity)
+    try
     {
-        cout << "INVENTORY IS FULL" << endl;
-        return;
-    }
-
-    if(this->total_stored_item != 0){   //arrOfElements empty
-        for (int i = 1 ; i <= this->total_stored_item; i++)
+        
+        /* code */
+        if (this->total_stored_item >= this->max_capacity)
         {
-            if(isEqualEngimon(this->arrOfElements[i-1], items)){
-                this->countElement[i-1]++;
-                //cout << "Berhasil ditambah" << endl;
-                total_stored_item++;
-                return;
-            }
+            
+            throw "INVENTORY IS FULL";
         }
-    }
 
-    this->total_stored_item = this->total_stored_item + 1;
-    this->arrOfElements.push_back(items);
-    this->countElement.push_back(1);
-    //cout << "Capacity = " << this->arrOfElements.capacity() << endl;
-    //cout << this->arrOfElements.size() << endl;
-    //cout << "Barang ditambahkan" << endl;
+        if(this->total_stored_item > 0){   //arrOfElements empty
+            
+            for (int i = 0 ; i < this->arrOfElements.size(); i++)
+            {
+                
+                if(isEqual(this->arrOfElements[i], items)){
+                    
+                    this->countElement[i]++;
+                    //cout << "Berhasil ditambah" << endl;
+                    total_stored_item++;
+                    return;
+                }
+            }
+            cout << endl;
+        }
+
+        this->total_stored_item = this->total_stored_item + 1;
+        this->arrOfElements.push_back(items);
+        this->countElement.push_back(1);
+        //cout << "Capacity = " << this->arrOfElements.capacity() << endl;
+        //cout << this->arrOfElements.size() << endl;
+        //cout << "Barang ditambahkan" << endl;
+        
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 }
 
-template <class Engimon>
-bool Inventory<Engimon>::isEqualEngimon(Engimon e1, Engimon e2)
+template <>
+bool Inventory<Engimon>::isEqual(Engimon e1, Engimon e2)
 {
-    return e1.get_species_name() == e2.get_species_name() && e1.get_engimon_name() == e2.get_engimon_name();
+    return 
+    e1.get_species_name() == e2.get_species_name() && 
+    e1.get_engimon_name() == e2.get_engimon_name() &&
+    e1.get_level() == e1.get_level();
+}
+
+template <>
+bool Inventory<Skill>::isEqual(Skill s1, Skill s2)
+{
+
+    return s1.getID() == s2.getID();
 }
 
 // template <class T>
