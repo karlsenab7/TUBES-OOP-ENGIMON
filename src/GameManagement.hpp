@@ -4,6 +4,7 @@
 #include<iostream>
 #include "Peta.hpp"
 #include "Player.hpp"
+#include "Engimon.hpp"
 #include "Input.hpp"
 
 using namespace std;
@@ -94,7 +95,7 @@ void GameManagement::executeCommand(string cmd)
     }
     else if (cmd == "i")
     {
-        // p->showInventory();
+        p->showEngimonInventory();
     }
     else if (cmd == "use")
     {
@@ -103,6 +104,10 @@ void GameManagement::executeCommand(string cmd)
     else if (cmd == "e")
     {
         // p->change_active_engimon();
+    }
+    else if (cmd == "l")
+    {
+        
     }
 }
 

@@ -3,9 +3,10 @@
 
 #include <iostream>
 #include <vector>
+#include "Engimon.hpp"
 // #include "Position.hpp"
-
 using namespace std;
+
 
 //----------------------------------------------------------------------------
 // MASIH KURANG
@@ -16,7 +17,7 @@ template <class T>
 class Inventory
 {
     private:
-        //int max_capacity;
+        int max_capacity;
         int total_stored_item;
         vector<T> arrOfElements;
         vector<int> countElement;
@@ -34,7 +35,7 @@ class Inventory
         T& getInventoryByIndex(int index);
         //int getJumlahItem(int index);
         int getJumlahItem(int index){
-            return this->countElement[i];
+            return this->countElement[index];
         }
         int getTotalItem(){
             int sum = 0;
@@ -49,10 +50,11 @@ class Inventory
         void set_total_stored_item(int newTotal);
         void addInventory(const T& items);
         void removeInventory(int index);
+        bool isEqualEngimon(T e1, T e2);
 };
 
 template <class T>
-Inventory<T>::Inventory() : total_stored_item(0)
+Inventory<T>::Inventory() : total_stored_item(0), max_capacity(50)
 {
     this->arrOfElements.clear();
     this->countElement.clear();
@@ -66,13 +68,13 @@ Inventory<T>::~Inventory()
     delete &this->countElement;
 }
 
-/*
+
 template <class T>
 int Inventory<T>::get_max_capacity()
 {
-    return this->max_capacity;
+    return max_capacity;
 }
-*/
+
 
 template <class T>
 int Inventory<T>::get_total_stored_item()
@@ -137,12 +139,19 @@ void Inventory<T>::set_total_stored_item(int newTotal)
 template <class T>
 void Inventory<T>::addInventory(const T& items)
 {
+    if (this->total_stored_item >= this->max_capacity)
+    {
+        cout << "INVENTORY IS FULL" << endl;
+        return;
+    }
+
     if(this->total_stored_item != 0){   //arrOfElements empty
         for (int i = 1 ; i <= this->total_stored_item; i++)
         {
-            if(this->arrOfElements[i-1] == items){
+            if(isEqualEngimon(this->arrOfElements[i-1], items)){
                 this->countElement[i-1]++;
                 //cout << "Berhasil ditambah" << endl;
+                total_stored_item++;
                 return;
             }
         }
@@ -156,12 +165,19 @@ void Inventory<T>::addInventory(const T& items)
     //cout << "Barang ditambahkan" << endl;
 }
 
-void Inventory<Engimon>::addInventory(const Engimon& items)
+template <class Engimon>
+bool Inventory<Engimon>::isEqualEngimon(Engimon e1, Engimon e2)
 {
-    this->total_stored_item = this->total_stored_item + 1;
-    this->arrOfElements.push_back(items);
-    this->countElement.push_back(1);
+    return e1.get_species_name() == e2.get_species_name() && e1.get_engimon_name() == e2.get_engimon_name();
 }
+
+// template <class T>
+// void Inventory<T>::addInventory(const T& items)
+// {
+//     this->total_stored_item = this->total_stored_item + 1;
+//     this->arrOfElements.push_back(items);
+//     this->countElement.push_back(1);
+// }
 
 template <class T>
 void Inventory<T>::removeInventory(int index)
@@ -184,20 +200,21 @@ void Inventory<T>::removeInventory(int index)
     }
 }
 
-void Inventory<Engimon>::removeInventory(int index)
-{
-    if(this->arrOfElements.empty() == false){
-        int j = 0;
-        vector<int>::iterator k = this->countElement.begin();
-        for (auto i = this->arrOfElements.begin(); i != this->arrOfElements.end(); i++, j++, k++)
-        {
-            if(j == index){
-                    this->arrOfElements.erase(i);
-                    this->countElement.erase(i);
-                }
-            this->total_stored_item = this->total_stored_item - 1;
-        }
-    }
-}
+
+// void Inventory<T>::removeInventory(int index)
+// {
+//     if(this->arrOfElements.empty() == false){
+//         int j = 0;
+//         vector<int>::iterator k = this->countElement.begin();
+//         for (auto i = this->arrOfElements.begin(); i != this->arrOfElements.end(); i++, j++, k++)
+//         {
+//             if(j == index){
+//                     this->arrOfElements.erase(i);
+//                     this->countElement.erase(i);
+//                 }
+//             this->total_stored_item = this->total_stored_item - 1;
+//         }
+//     }
+// }
 
 #endif

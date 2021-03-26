@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include "Skill.hpp"
+#include "Element.hpp"
 //#include "Skill.cpp"
 #include "folderEngimon/EngimonBase.hpp"
 //#include "folderEngimon/EngimonBase.cpp"
@@ -24,8 +25,11 @@ class Engimon : public EngimonBase {
             for (int i = 0; i < 2; i++) {parents_species[i] = "-";}
 
             // Maksudnya masukin skill default, perubahan mengikuti Skill.hpp
-            int learnableBy[1] = {1};
-            Skill ember = Skill("1", "Ember", "Fire", learnableBy, 10, "Default Skill", false, "-");
+            //int learnableBy[1] = {1};
+            vector<Element> learnableBy;
+            Element el("Fire");
+            learnableBy.push_back(el);
+            Skill ember = Skill("1", "Ember", learnableBy, 10, "Default Skill", false, "-");
             engimon_skills.push_back(ember);
         }
 
@@ -161,44 +165,44 @@ class Engimon : public EngimonBase {
         // Untuk testing dan contoh penggunaan; comment atau hapus saat header akan digunakan
         // Note: elemen di skill masih berupa string, belum class element
         // Note: belum ada batasan skill yang bisa dipelajari
-        int test_main() {
-            Engimon missingno = Engimon();
+        // int test_main() {
+        //     Engimon missingno = Engimon();
 
-            int learnableBy[1] = {1};
-            Skill pikavolt = Skill("1", "Pikavolt", "Electric", learnableBy, 80, "Delivers high voltage electricity", true, "Pikachu");
-            Skill thundershock = Skill("2", "Thundershock", "Electric", learnableBy, 40, "Delivers mild shock", false, "-");
-            Skill discharge = Skill("3", "Discharge", "Electric", learnableBy, 60, "Discharges build-up electricity", false, "-");
-            Skill nuzzle = Skill("4", "Nuzzle", "Electric", learnableBy, 20, "Delivers weak static through contact", false, "-");
-            Skill thunderbolt = Skill("5", "Thunderbolt", "Electric", learnableBy, 70, "Delivers strong electric bolt", false, "-");
+        //     int learnableBy[1] = {1};
+        //     Skill pikavolt = Skill("1", "Pikavolt", "Electric", learnableBy, 80, "Delivers high voltage electricity", true, "Pikachu");
+        //     Skill thundershock = Skill("2", "Thundershock", "Electric", learnableBy, 40, "Delivers mild shock", false, "-");
+        //     Skill discharge = Skill("3", "Discharge", "Electric", learnableBy, 60, "Discharges build-up electricity", false, "-");
+        //     Skill nuzzle = Skill("4", "Nuzzle", "Electric", learnableBy, 20, "Delivers weak static through contact", false, "-");
+        //     Skill thunderbolt = Skill("5", "Thunderbolt", "Electric", learnableBy, 70, "Delivers strong electric bolt", false, "-");
 
-            vector<Skill> pikachuSkill = {pikavolt};
-            vector<Element> pikachuElement = {Element("Electric")};
-            string parents[2] = {missingno.get_engimon_name(), missingno.get_species_name()};
+        //     vector<Skill> pikachuSkill = {pikavolt};
+        //     vector<Element> pikachuElement = {Element("Electric")};
+        //     string parents[2] = {missingno.get_engimon_name(), missingno.get_species_name()};
     
-            Engimon pikachu = Engimon("-", parents, pikachuElement, 1, 1, 1, "Pikachu", parents, pikachuSkill);
-            Engimon pikachu2 = pikachu;
+        //     Engimon pikachu = Engimon("-", parents, pikachuElement, 1, 1, 1, "Pikachu", parents, pikachuSkill);
+        //     Engimon pikachu2 = pikachu;
 
-            pikachu2.set_engimon_name("Pikapi");
+        //     pikachu2.set_engimon_name("Pikapi");
             
-            pikachu2.add_skill(discharge);
-            pikachu2.add_skill(thundershock);
-            pikachu2.add_skill(nuzzle);
+        //     pikachu2.add_skill(discharge);
+        //     pikachu2.add_skill(thundershock);
+        //     pikachu2.add_skill(nuzzle);
             
-            Engimon pikachu3 = Engimon(pikachu2);
+        //     Engimon pikachu3 = Engimon(pikachu2);
 
-            pikachu3.change_skill(thunderbolt, thundershock);
-            pikachu3.change_skill_alt(thundershock, 3);
+        //     pikachu3.change_skill(thunderbolt, thundershock);
+        //     pikachu3.change_skill_alt(thundershock, 3);
 
 
-            missingno.print_details();
-            pikachu.print_details();
-            pikachu2.print_details();
+        //     missingno.print_details();
+        //     pikachu.print_details();
+        //     pikachu2.print_details();
 
-            pikachu3.change_skill(thunderbolt, thundershock);
-            pikachu3.change_skill_alt(thundershock, 0);
-            pikachu3.print_details();
-            return 0;
-        }
+        //     pikachu3.change_skill(thunderbolt, thundershock);
+        //     pikachu3.change_skill_alt(thundershock, 0);
+        //     pikachu3.print_details();
+        //     return 0;
+        // }
 
 };
 

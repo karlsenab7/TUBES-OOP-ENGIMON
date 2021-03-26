@@ -4,8 +4,10 @@
 #include <iostream>
 #include<vector>
 #include "Position.hpp"
-//#include "Inventory.hpp"
+#include "Inventory.hpp"
 #include "Peta.hpp"
+#include "Engimon.hpp"
+#include "Skill.hpp"
 // #include "folderEngimon/Engimon.hpp"
 //#include "Breed.hpp"
 //#include "Item.hpp"
@@ -27,10 +29,10 @@ class Player
         Position position;
         Position activeEngimonPosition;
         Peta *peta = new Peta();
-        // Inventory<Engimon> inventoryEngimon;
-        //Inventory<Item> inventoryItem;
+        Inventory<Engimon> inventoryEngimon;
+        Inventory<Skill> inventoryItem;
         int activeEngimonIdx;
-        int max_capacity;
+        //int max_capacity;
     
     public:
         //ctor nanti hapus yang ga perlu aja
@@ -66,10 +68,11 @@ class Player
         // IMPLEMENTASI
         void set_name(string);
         void showPeta();
+        void showEngimonInventory();
         
 };
 
-Player::Player() : position(default_player_posX,default_player_posY), activeEngimonIdx(-1), max_capacity(default_max_inven_cap) 
+Player::Player() : position(default_player_posX,default_player_posY), activeEngimonIdx(-1)
 //Untuk sekarang -1 artinya tidak ada Engimon
 {
     // --------------initialize player di peta--------------------------//
@@ -267,5 +270,28 @@ void Player::moveLEFT()
 //     //implementasi breeding (????????)
 //     //mungkin ini maksudnya proses breedingnya?
 // }
+
+
+void Player::showEngimonInventory()
+{
+    cout << "-----------------------------------\n";
+    if (inventoryEngimon.getTotalItem() == 0)
+    {
+        cout << "** ENGIMON INVENTORY IS EMPTY **" << endl;
+    }
+    else
+    {
+        vector<int> countEl = inventoryEngimon.getInventoryCount();
+        vector<Engimon> el = inventoryEngimon.getInventory();
+        for (int i = 0; i < countEl.size(); i++)
+        {
+            cout << i + 1 << ".  ";
+            cout << countEl[i] << "x ";
+            cout << el[i].get_engimon_name() << " - Level " << el[i].get_level() << endl;
+        }
+        
+    }
+    cout << "-----------------------------------\n";
+}
 
 #endif
